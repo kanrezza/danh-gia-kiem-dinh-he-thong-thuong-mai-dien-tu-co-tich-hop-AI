@@ -1,0 +1,378 @@
+[
+  {
+    "nhom": "SQL Injection",
+    "ma": "SEC-SQLI-01",
+    "kichBan": "Dang nhap voi payload: ' OR '1'='1",
+    "ketQua": "HTTP 401, 3ms",
+    "danhGia": "DAT",
+    "chiTiet": "{\"message\":\"User not found\"}"
+  },
+  {
+    "nhom": "SQL Injection",
+    "ma": "SEC-SQLI-01",
+    "kichBan": "Dang nhap voi payload: ' OR 1=1 --",
+    "ketQua": "HTTP 401, 2ms",
+    "danhGia": "DAT",
+    "chiTiet": "{\"message\":\"User not found\"}"
+  },
+  {
+    "nhom": "SQL Injection",
+    "ma": "SEC-SQLI-01",
+    "kichBan": "Dang nhap voi payload: admin'--",
+    "ketQua": "HTTP 401, 3ms",
+    "danhGia": "DAT",
+    "chiTiet": "{\"message\":\"User not found\"}"
+  },
+  {
+    "nhom": "SQL Injection",
+    "ma": "SEC-SQLI-01",
+    "kichBan": "Dang nhap voi payload: ' UNION SELECT NULL,NULL,NULL,NULL,NULL --",
+    "ketQua": "HTTP 401, 2ms",
+    "danhGia": "DAT",
+    "chiTiet": "{\"message\":\"User not found\"}"
+  },
+  {
+    "nhom": "SQL Injection",
+    "ma": "SEC-SQLI-01",
+    "kichBan": "Dang nhap voi payload: '; DROP TABLE users; --",
+    "ketQua": "HTTP 401, 6ms",
+    "danhGia": "DAT",
+    "chiTiet": "{\"message\":\"User not found\"}"
+  },
+  {
+    "nhom": "SQL Injection",
+    "ma": "SEC-SQLI-01",
+    "kichBan": "Dang nhap voi payload: 1' AND SLEEP(3) --",
+    "ketQua": "HTTP 401, 2ms",
+    "danhGia": "DAT",
+    "chiTiet": "{\"message\":\"User not found\"}"
+  },
+  {
+    "nhom": "SQL Injection",
+    "ma": "SEC-SQLI-02",
+    "kichBan": "GET /api/products/:id voi payload: 1 OR 1=1",
+    "ketQua": "HTTP 200, id tra ve: 1",
+    "danhGia": "DAT - MySQL ep kieu tham so thay vi ghep chuoi, khong thuc thi duoc payload",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "SQL Injection",
+    "ma": "SEC-SQLI-02",
+    "kichBan": "GET /api/products/:id voi payload: 1' OR '1'='1",
+    "ketQua": "HTTP 200, id tra ve: 1",
+    "danhGia": "DAT - MySQL ep kieu tham so thay vi ghep chuoi, khong thuc thi duoc payload",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "SQL Injection",
+    "ma": "SEC-SQLI-02",
+    "kichBan": "GET /api/products/:id voi payload: 1;SELECT 1",
+    "ketQua": "HTTP 200, id tra ve: 1",
+    "danhGia": "DAT - MySQL ep kieu tham so thay vi ghep chuoi, khong thuc thi duoc payload",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "SQL Injection",
+    "ma": "SEC-SQLI-02",
+    "kichBan": "GET /api/products/:id voi payload: -1 OR 1=1",
+    "ketQua": "HTTP 404, id tra ve: undefined",
+    "danhGia": "DAT - MySQL ep kieu tham so thay vi ghep chuoi, khong thuc thi duoc payload",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "SQL Injection",
+    "ma": "SEC-SQLI-03",
+    "kichBan": "Tham so categoryId voi payload: 1 OR 1=1",
+    "ketQua": "HTTP 200",
+    "danhGia": "DAT",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "SQL Injection",
+    "ma": "SEC-SQLI-03",
+    "kichBan": "Tham so categoryId voi payload: 1 UNION SELECT 1",
+    "ketQua": "HTTP 200",
+    "danhGia": "DAT",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "SQL Injection",
+    "ma": "SEC-SQLI-04",
+    "kichBan": "Luu payload DROP TABLE vao truong ho ten",
+    "ketQua": "Dang ky HTTP 200, he thong sau do HTTP 200",
+    "danhGia": "DAT - du lieu duoc tham so hoa, bang users khong bi xoa",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Cross-Site Scripting",
+    "ma": "SEC-XSS-01",
+    "kichBan": "Luu payload vao ho so: <script>alert('XSS')</script>",
+    "ketQua": "Luu va tra ve nguyen van",
+    "danhGia": "CANH BAO - khong lam sach dau vao, phu thuoc hoan toan vao React de thoat ky tu",
+    "chiTiet": "Content-Type: application/json; charset=utf-8"
+  },
+  {
+    "nhom": "Cross-Site Scripting",
+    "ma": "SEC-XSS-01",
+    "kichBan": "Luu payload vao ho so: <img src=x onerror=alert(1)>",
+    "ketQua": "Luu va tra ve nguyen van",
+    "danhGia": "CANH BAO - khong lam sach dau vao, phu thuoc hoan toan vao React de thoat ky tu",
+    "chiTiet": "Content-Type: application/json; charset=utf-8"
+  },
+  {
+    "nhom": "Cross-Site Scripting",
+    "ma": "SEC-XSS-01",
+    "kichBan": "Luu payload vao ho so: \"><svg/onload=alert(1)>",
+    "ketQua": "Luu va tra ve nguyen van",
+    "danhGia": "CANH BAO - khong lam sach dau vao, phu thuoc hoan toan vao React de thoat ky tu",
+    "chiTiet": "Content-Type: application/json; charset=utf-8"
+  },
+  {
+    "nhom": "Cross-Site Scripting",
+    "ma": "SEC-XSS-01",
+    "kichBan": "Luu payload vao ho so: javascript:alert(document.cookie)",
+    "ketQua": "Luu va tra ve nguyen van",
+    "danhGia": "CANH BAO - khong lam sach dau vao, phu thuoc hoan toan vao React de thoat ky tu",
+    "chiTiet": "Content-Type: application/json; charset=utf-8"
+  },
+  {
+    "nhom": "Cross-Site Scripting",
+    "ma": "SEC-XSS-02",
+    "kichBan": "Luu ma doc vao tin nhan ho tro",
+    "ketQua": "Luu nguyen van",
+    "danhGia": "CANH BAO - luu nguyen van, rui ro neu hien thi bang innerHTML",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "CSRF",
+    "ma": "SEC-CSRF-01",
+    "kichBan": "Gui yeu cau ghi kem Origin tu mien la",
+    "ketQua": "HTTP 200",
+    "danhGia": "DAT - he thong dung JWT trong header Authorization, khong dung cookie phien nen khong bi CSRF co dien",
+    "chiTiet": "Trinh duyet khong tu dinh kem header Authorization cho yeu cau tu mien khac"
+  },
+  {
+    "nhom": "CSRF",
+    "ma": "SEC-CSRF-02",
+    "kichBan": "Kiem tra chinh sach CORS",
+    "ketQua": "Access-Control-Allow-Origin: *",
+    "danhGia": "CANH BAO - CORS mo cho moi nguon",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Xac thuc",
+    "ma": "SEC-AUTH-02",
+    "kichBan": "Dang ky voi mat khau mot ky tu",
+    "ketQua": "HTTP 200",
+    "danhGia": "THAT BAI - khong co chinh sach do manh mat khau khi dang ky",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Xac thuc",
+    "ma": "SEC-AUTH-03",
+    "kichBan": "Thong bao loi co phan biet tai khoan ton tai hay khong",
+    "ketQua": "Khong ton tai: \"User not found\" | Sai mat khau: \"Wrong password\"",
+    "danhGia": "CANH BAO - cho phep liet ke tai khoan hop le",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Xac thuc",
+    "ma": "SEC-AUTH-04",
+    "kichBan": "Mat khau duoc bam truoc khi luu",
+    "ketQua": "Da kiem chung bang test AUTH-009 va ADM-005",
+    "danhGia": "DAT - bcrypt he so 10",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Quan ly phien",
+    "ma": "SEC-SESS-01",
+    "kichBan": "Noi dung ma thong bao JWT",
+    "ketQua": "{\"id\":6,\"role\":\"CUSTOMER\",\"is_active\":1,\"iat\":1790317681,\"exp\":1790321281}",
+    "danhGia": "DAT - khong chua du lieu nhay cam",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Quan ly phien",
+    "ma": "SEC-SESS-02",
+    "kichBan": "Thoi han ma thong bao",
+    "ketQua": "3600 giay (1 gio)",
+    "danhGia": "DAT - thoi han 1 gio",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Quan ly phien",
+    "ma": "SEC-SESS-03",
+    "kichBan": "Gia mao ma thong bao bang khoa sai, nang quyen len ADMIN",
+    "ketQua": "HTTP 401",
+    "danhGia": "DAT - chu ky duoc xac minh",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Quan ly phien",
+    "ma": "SEC-SESS-04",
+    "kichBan": "Tan cong thuat toan none",
+    "ketQua": "HTTP 401",
+    "danhGia": "DAT - tu choi thuat toan none",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Quan ly phien",
+    "ma": "SEC-SESS-05",
+    "kichBan": "Ma thong bao da het han",
+    "ketQua": "HTTP 401",
+    "danhGia": "DAT",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Quan ly phien",
+    "ma": "SEC-SESS-06",
+    "kichBan": "Noi luu ma thong bao phia trinh duyet",
+    "ketQua": "localStorage (xem frontend/src/services/api.js)",
+    "danhGia": "CANH BAO - localStorage doc duoc bang JavaScript, XSS se danh cap duoc ma thong bao",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Kiem soat truy cap",
+    "ma": "SEC-AC-01",
+    "kichBan": "Khach hang goi GET /api/users",
+    "ketQua": "HTTP 403",
+    "danhGia": "DAT",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Kiem soat truy cap",
+    "ma": "SEC-AC-01",
+    "kichBan": "Khach hang goi GET /api/users/logs",
+    "ketQua": "HTTP 403",
+    "danhGia": "DAT",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Kiem soat truy cap",
+    "ma": "SEC-AC-01",
+    "kichBan": "Khach hang goi GET /api/orders/admin/stats",
+    "ketQua": "HTTP 403",
+    "danhGia": "DAT",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Kiem soat truy cap",
+    "ma": "SEC-AC-01",
+    "kichBan": "Khach hang goi GET /api/products/pending",
+    "ketQua": "HTTP 403",
+    "danhGia": "DAT",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Kiem soat truy cap",
+    "ma": "SEC-AC-01",
+    "kichBan": "Khach hang goi GET /api/vouchers",
+    "ketQua": "HTTP 403",
+    "danhGia": "DAT",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Kiem soat truy cap",
+    "ma": "SEC-AC-01",
+    "kichBan": "Khach hang goi GET /api/users/staff/payroll?month=2026-09",
+    "ketQua": "HTTP 403",
+    "danhGia": "DAT",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Kiem soat truy cap",
+    "ma": "SEC-AC-02",
+    "kichBan": "Khach hang tu nang vai tro cua minh len ADMIN",
+    "ketQua": "HTTP 403",
+    "danhGia": "DAT",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Kiem soat truy cap",
+    "ma": "SEC-AC-03",
+    "kichBan": "IDOR: khach hang 1 doc hoi thoai cua khach hang 2",
+    "ketQua": "HTTP 200, lo noi dung rieng tu",
+    "danhGia": "THAT BAI - lo hong IDOR (DEF-08)",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Kiem soat truy cap",
+    "ma": "SEC-AC-05",
+    "kichBan": "Khach hang goi POST /api/products",
+    "ketQua": "HTTP 200",
+    "danhGia": "THAT BAI - thieu roleMiddleware (DEF-03)",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Kiem soat truy cap",
+    "ma": "SEC-AC-06",
+    "kichBan": "Ap dung voucher khi khong dang nhap",
+    "ketQua": "HTTP 200",
+    "danhGia": "CANH BAO - cho phep do ma voucher (DEF-09)",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Tieu de bao mat",
+    "ma": "SEC-HDR-01",
+    "kichBan": "content-security-policy (Chong XSS va chen ma)",
+    "ketQua": "KHONG CO",
+    "danhGia": "THAT BAI - thieu tieu de bao mat",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Tieu de bao mat",
+    "ma": "SEC-HDR-01",
+    "kichBan": "x-frame-options (Chong clickjacking)",
+    "ketQua": "KHONG CO",
+    "danhGia": "THAT BAI - thieu tieu de bao mat",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Tieu de bao mat",
+    "ma": "SEC-HDR-01",
+    "kichBan": "x-content-type-options (Chong doan kieu MIME)",
+    "ketQua": "KHONG CO",
+    "danhGia": "THAT BAI - thieu tieu de bao mat",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Tieu de bao mat",
+    "ma": "SEC-HDR-01",
+    "kichBan": "strict-transport-security (Bat buoc dung HTTPS)",
+    "ketQua": "KHONG CO",
+    "danhGia": "THAT BAI - thieu tieu de bao mat",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Tieu de bao mat",
+    "ma": "SEC-HDR-01",
+    "kichBan": "referrer-policy (Han che ro ri duong dan)",
+    "ketQua": "KHONG CO",
+    "danhGia": "THAT BAI - thieu tieu de bao mat",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Tieu de bao mat",
+    "ma": "SEC-HDR-01",
+    "kichBan": "permissions-policy (Gioi han quyen truy cap thiet bi)",
+    "ketQua": "KHONG CO",
+    "danhGia": "THAT BAI - thieu tieu de bao mat",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Tieu de bao mat",
+    "ma": "SEC-HDR-02",
+    "kichBan": "X-Powered-By (lo cong nghe may chu)",
+    "ketQua": "Express",
+    "danhGia": "CANH BAO - lo ra Express",
+    "chiTiet": ""
+  },
+  {
+    "nhom": "Xac thuc",
+    "ma": "SEC-AUTH-01",
+    "kichBan": "Do mat khau: gui 15 lan dang nhap sai lien tiep",
+    "ketQua": "7 lan bi chan boi gioi han tan suat",
+    "danhGia": "DAT - co gioi han tan suat",
+    "chiTiet": ""
+  }
+]

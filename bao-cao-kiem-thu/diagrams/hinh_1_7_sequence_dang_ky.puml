@@ -1,0 +1,62 @@
+@startuml
+' Hinh 1.7 - So do tuan tu: Dang ky tai khoan khach hang
+!theme plain
+skinparam dpi 200
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+skinparam shadowing false
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "Khách hàng" as U
+participant "Register.js\n(React)" as UI
+participant "api.js\n(HTTP Client)" as API
+participant "authRoutes\n+ rateLimit" as RT
+participant "authController\n.register()" as CTRL
+participant "bcrypt" as BC
+participant "User Model" as MODEL
+database "MySQL\n(ecommerce)" as DB
+
+U -> UI : Nhập name, email, password,\nphone, birthday
+UI -> UI : Validate phía client\n(bắt buộc, khớp mật khẩu)
+UI -> API : register(payload)
+API -> RT : POST /api/auth/register
+RT -> RT : Kiểm tra giới hạn\n10 request / 60 giây
+
+alt Vượt giới hạn tần suất
+  RT --> API : 429 - "Bạn gửi lệnh quá nhanh"
+  API --> UI : Hiển thị cảnh báo
+else Hợp lệ
+  RT -> CTRL : register(req, res)
+  CTRL -> CTRL : Kiểm tra trường bắt buộc
+
+  alt Thiếu thông tin
+    CTRL --> API : 400 - "Thiếu thông tin đăng ký"
+  else Đủ thông tin
+    CTRL -> BC : hashSync(password, 10)
+    BC --> CTRL : hashedPassword
+    CTRL -> MODEL : create({..., role_id = 5})
+    MODEL -> DB : INSERT INTO users
+
+    alt Email đã tồn tại (UNIQUE)
+      DB --> MODEL : Duplicate entry error
+      MODEL --> CTRL : err
+      CTRL --> API : 500 - "Email đã tồn tại"
+    else Tạo thành công
+      DB --> MODEL : OK
+      CTRL -> DB : SELECT id FROM users WHERE email = ?
+      DB --> CTRL : newUserId
+      opt Có nhập birthday
+        CTRL -> DB : UPDATE users SET birthday = ?
+      end
+      CTRL -> DB : INSERT INTO vouchers\n(voucher chào mừng 50%, HSD 30 ngày)
+      DB --> CTRL : voucherId
+      CTRL -> DB : INSERT INTO user_vouchers\n(user_id, voucher_id, used = 0)
+      CTRL --> API : 200 - { message, welcomeVoucher, giftMessage }
+      API --> UI : Thông báo thành công
+      UI -> U : Điều hướng sang trang Đăng nhập
+    end
+  end
+end
+
+@enduml

@@ -1,0 +1,711 @@
+{
+ "openapi": "3.0.0",
+ "info": {
+  "title": "Tiger Shop API",
+  "version": "1.0.0"
+ },
+ "servers": [
+  {
+   "url": "http://host.docker.internal:5001"
+  }
+ ],
+ "paths": {
+  "/api/users/": {
+   "get": {
+    "summary": "/api/users/",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/users/me": {
+   "get": {
+    "summary": "/api/users/me",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/users/staff/created": {
+   "get": {
+    "summary": "/api/users/staff/created",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/users/staff/pending": {
+   "get": {
+    "summary": "/api/users/staff/pending",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/users/staff/active": {
+   "get": {
+    "summary": "/api/users/staff/active",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/users/staff/probation": {
+   "get": {
+    "summary": "/api/users/staff/probation",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/users/inventory/logs": {
+   "get": {
+    "summary": "/api/users/inventory/logs",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/users/staff/payroll": {
+   "get": {
+    "summary": "/api/users/staff/payroll",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/users/staff/payroll/detail": {
+   "get": {
+    "summary": "/api/users/staff/payroll/detail",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/users/staff/payroll/me": {
+   "get": {
+    "summary": "/api/users/staff/payroll/me",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/users/staff/payroll/me/detail": {
+   "get": {
+    "summary": "/api/users/staff/payroll/me/detail",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/users/staff/requests/my": {
+   "get": {
+    "summary": "/api/users/staff/requests/my",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/users/staff/requests/pending": {
+   "get": {
+    "summary": "/api/users/staff/requests/pending",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/users/staff/shifts/my": {
+   "get": {
+    "summary": "/api/users/staff/shifts/my",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/users/staff/shifts/pending": {
+   "get": {
+    "summary": "/api/users/staff/shifts/pending",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/users/attendance/me": {
+   "get": {
+    "summary": "/api/users/attendance/me",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/users/attendance/issues": {
+   "get": {
+    "summary": "/api/users/attendance/issues",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/users/logs": {
+   "get": {
+    "summary": "/api/users/logs",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/products/": {
+   "get": {
+    "summary": "/api/products/",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/products/inventory-alert": {
+   "get": {
+    "summary": "/api/products/inventory-alert",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/products/pending": {
+   "get": {
+    "summary": "/api/products/pending",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/products/decided": {
+   "get": {
+    "summary": "/api/products/decided",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/products/{id}/reviews": {
+   "get": {
+    "summary": "/api/products/{id}/reviews",
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/products/{id}": {
+   "get": {
+    "summary": "/api/products/{id}",
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/variants/product/{productId}": {
+   "get": {
+    "summary": "/api/variants/product/{productId}",
+    "parameters": [
+     {
+      "name": "productId",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/vouchers/public": {
+   "get": {
+    "summary": "/api/vouchers/public",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/vouchers/": {
+   "get": {
+    "summary": "/api/vouchers/",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/user-vouchers/available": {
+   "get": {
+    "summary": "/api/user-vouchers/available",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/user-vouchers/my": {
+   "get": {
+    "summary": "/api/user-vouchers/my",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/orders/admin/stats": {
+   "get": {
+    "summary": "/api/orders/admin/stats",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/orders/admin/best-products": {
+   "get": {
+    "summary": "/api/orders/admin/best-products",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/orders/admin/top-profit-products": {
+   "get": {
+    "summary": "/api/orders/admin/top-profit-products",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/orders/admin/uncompleted": {
+   "get": {
+    "summary": "/api/orders/admin/uncompleted",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/orders/admin/category-revenue": {
+   "get": {
+    "summary": "/api/orders/admin/category-revenue",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/orders/admin/monthly-revenue": {
+   "get": {
+    "summary": "/api/orders/admin/monthly-revenue",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/orders/admin/weekly-revenue": {
+   "get": {
+    "summary": "/api/orders/admin/weekly-revenue",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/orders/admin/customer-growth": {
+   "get": {
+    "summary": "/api/orders/admin/customer-growth",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/orders/admin/": {
+   "get": {
+    "summary": "/api/orders/admin/",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/orders/my": {
+   "get": {
+    "summary": "/api/orders/my",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/orders/{id}": {
+   "get": {
+    "summary": "/api/orders/{id}",
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/orders/admin": {
+   "get": {
+    "summary": "/api/orders/admin",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/orders/admin/best-selling": {
+   "get": {
+    "summary": "/api/orders/admin/best-selling",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/orders/admin/{id}": {
+   "get": {
+    "summary": "/api/orders/admin/{id}",
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/categories/": {
+   "get": {
+    "summary": "/api/categories/",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/chat/admin/threads": {
+   "get": {
+    "summary": "/api/chat/admin/threads",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/chat/admin/threads/{threadId}/messages": {
+   "get": {
+    "summary": "/api/chat/admin/threads/{threadId}/messages",
+    "parameters": [
+     {
+      "name": "threadId",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/chat/admin/threads/{threadId}/suggestions": {
+   "get": {
+    "summary": "/api/chat/admin/threads/{threadId}/suggestions",
+    "parameters": [
+     {
+      "name": "threadId",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/chat/admin/users/{userId}/orders": {
+   "get": {
+    "summary": "/api/chat/admin/users/{userId}/orders",
+    "parameters": [
+     {
+      "name": "userId",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/chat/my-thread": {
+   "get": {
+    "summary": "/api/chat/my-thread",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/chat/messages/{threadId}": {
+   "get": {
+    "summary": "/api/chat/messages/{threadId}",
+    "parameters": [
+     {
+      "name": "threadId",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/chat/ai/history": {
+   "get": {
+    "summary": "/api/chat/ai/history",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/shifts/mine": {
+   "get": {
+    "summary": "/api/shifts/mine",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/shifts/all": {
+   "get": {
+    "summary": "/api/shifts/all",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/shifts/day": {
+   "get": {
+    "summary": "/api/shifts/day",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/notifications/unread": {
+   "get": {
+    "summary": "/api/notifications/unread",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  },
+  "/api/notifications/": {
+   "get": {
+    "summary": "/api/notifications/",
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "OK"
+     }
+    }
+   }
+  }
+ }
+}

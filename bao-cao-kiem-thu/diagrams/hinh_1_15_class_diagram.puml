@@ -1,0 +1,231 @@
+@startuml
+' Hinh 1.15 - So do lop (Domain Model) he thong Tiger Shop
+!theme plain
+skinparam dpi 200
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+hide circle
+
+package "Người dùng & Phân quyền" #F4F6F7 {
+  class Role {
+    - id : int
+    - name : string
+    + getPermissions() : List
+  }
+
+  class User {
+    - id : int
+    - name : string
+    - email : string
+    - password : string
+    - phone : string
+    - avatar : string
+    - birthday : date
+    - status : string
+    - is_active : boolean
+    - deleted_at : datetime
+    - employment_status : string
+    - probation_hourly_rate : decimal
+    - official_hourly_rate : decimal
+    + register() : void
+    + login() : Token
+    + changePassword() : boolean
+    + updateProfile() : void
+  }
+}
+
+package "Danh mục sản phẩm" #EBF5FB {
+  class Category {
+    - id : int
+    - name : string
+    - display_type : string
+    + countProducts() : int
+  }
+
+  class Product {
+    - id : int
+    - name : string
+    - price : decimal
+    - original_price : decimal
+    - description : text
+    - stock : int
+    - image : string
+    - status : string
+    - specifications : json
+    - embedding : text
+    - rejection_reason : string
+    - deleted_at : datetime
+    + approve() : void
+    + reject(reason) : void
+    + softDelete() : void
+    + restore() : void
+  }
+
+  class ProductVariant {
+    - id : int
+    - sku : string
+    - variant_name : string
+    - price : decimal
+    - stock : int
+    + decreaseStock(qty) : boolean
+  }
+
+  class ProductReview {
+    - id : int
+    - rating : int
+    - comment : text
+    - image_url : string
+    + createOrUpdate() : void
+  }
+}
+
+package "Bán hàng" #E8F8F5 {
+  class Order {
+    - id : int
+    - total : decimal
+    - status : string
+    - receiver_name : string
+    - receiver_phone : string
+    - shipping_address : string
+    - expected_delivery : date
+    - payment_method : string
+    + create() : int
+    + cancel(reason) : void
+    + updateStatus(status) : void
+  }
+
+  class OrderItem {
+    - id : int
+    - quantity : int
+    - price : decimal
+    - product_name : string
+    - product_image : string
+    + subTotal() : decimal
+  }
+
+  class Voucher {
+    - voucher_id : int
+    - code : string
+    - type : string
+    - value : decimal
+    - min_order_value : decimal
+    - max_discount : decimal
+    - quantity : int
+    - used : int
+    - start_date : date
+    - end_date : date
+    - status : string
+    + isApplicable(total) : boolean
+    + calculateDiscount(total) : decimal
+  }
+
+  class UserVoucher {
+    - used : boolean
+    - received_at : datetime
+    + markUsed() : void
+  }
+
+  class ReturnRequest {
+    - id : int
+    - reason : text
+    - status : string
+  }
+}
+
+package "Nhân sự" #FEF9E7 {
+  class AttendanceSession {
+    - id : int
+    - check_in_at : datetime
+    - check_out_at : datetime
+    - worked_seconds : int
+    - wage_rate : decimal
+    - status : string
+    + clockIn() : void
+    + clockOut() : void
+    + calculateWage() : decimal
+  }
+
+  class ShiftRegistration {
+    - id : int
+    - shift_date : date
+    - start_time : time
+    - end_time : time
+    - status : string
+    + approve() : void
+    + reject(note) : void
+  }
+
+  class StaffRequest {
+    - id : int
+    - request_type : string
+    - request_date : date
+    - minutes_late : int
+    - reason : string
+    - status : string
+    + decide(status, note) : void
+  }
+}
+
+package "Hỗ trợ khách hàng" #FDEDEC {
+  class Thread {
+    - id : int
+    - status : string
+    - is_ai_muted : boolean
+    + requestStaff() : void
+  }
+
+  class ChatMessage {
+    - id : int
+    - sender_role : string
+    - message : text
+    - type : string
+    - created_at : datetime
+  }
+
+  class AiChatSession {
+    - id : int
+    + getRecentMessages(n) : List
+  }
+
+  class AiChatMessage {
+    - id : int
+    - role : enum
+    - message : text
+    - voucher : string
+    - metadata : json
+  }
+
+  class Notification {
+    - id : int
+    - title : string
+    - message : text
+    - type : string
+    - is_read : boolean
+  }
+}
+
+Role "1" -- "0..*" User : phân quyền >
+User "1" -- "0..*" Order : đặt >
+Order "1" *-- "1..*" OrderItem : gồm >
+Product "1" -- "0..*" OrderItem : được đặt <
+Product "1" *-- "0..*" ProductVariant : có >
+ProductVariant "0..1" -- "0..*" OrderItem
+Category "1" -- "0..*" Product : phân loại >
+User "1" -- "0..*" ProductReview : viết >
+Product "1" -- "0..*" ProductReview : nhận <
+User "1" -- "0..*" UserVoucher : sở hữu >
+Voucher "1" -- "0..*" UserVoucher : được phát <
+Order "1" -- "0..*" ReturnRequest : yêu cầu >
+User "1" -- "0..*" AttendanceSession : chấm công >
+User "1" -- "0..*" ShiftRegistration : đăng ký >
+User "1" -- "0..*" StaffRequest : gửi đơn >
+User "1" -- "0..1" Thread : hội thoại >
+Thread "1" *-- "0..*" ChatMessage : chứa >
+User "1" -- "0..1" AiChatSession : phiên AI >
+AiChatSession "1" *-- "0..*" AiChatMessage : lưu >
+User "1" -- "0..*" Notification : nhận >
+User "1" -- "0..*" Product : quản lý (manager_id) >
+
+@enduml

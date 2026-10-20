@@ -1,0 +1,328 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap");
+
+.order-detail-premium-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: #0f172a;
+  padding: 60px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hiệu ứng Blobs đồng bộ */
+.dynamic-blobs .blob {
+  position: absolute;
+  filter: blur(120px);
+  z-index: 0;
+  opacity: 0.15;
+}
+.odb-blue {
+  width: 500px;
+  height: 500px;
+  background: #ee4d2d;
+  top: -10%;
+  left: -5%;
+}
+.odb-purple {
+  width: 400px;
+  height: 400px;
+  background: #ff7337;
+  bottom: 0;
+  right: -5%;
+}
+
+.order-detail-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.detail-header-top {
+  margin-bottom: 40px;
+}
+
+.back-btn-premium {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #94a3b8;
+  padding: 8px 18px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 15px;
+}
+.back-btn-premium:hover {
+  background: #0f172a;
+  color: white;
+}
+
+.premium-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+.premium-title span {
+  color: #ee4d2d;
+  font-size: 1.4rem;
+}
+
+/* Grid Layout */
+.detail-grid-layout {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 30px;
+}
+
+/* Section Cards */
+.glass-section-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #64748b;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+  display: block;
+}
+
+/* Status Tag Styling */
+.status-display-box {
+  text-align: center;
+  padding: 10px 0;
+}
+.premium-status-tag {
+  padding: 8px 24px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  display: inline-block;
+}
+.st-pending {
+  background: rgba(234, 179, 8, 0.2);
+  color: #fbbf24;
+}
+.st-shipping {
+  background: rgba(238, 77, 45, 0.15);
+  color: #ee4d2d;
+}
+.st-completed {
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+}
+.st-cancelled {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.order-time-stamp {
+  color: #64748b;
+  font-size: 0.8rem;
+  margin-top: 15px;
+}
+
+/* User Info Group */
+.user-info-group .info-item {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.info-item label {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+.info-item span {
+  font-weight: 600;
+  color: #0f172a;
+}
+.info-item.highlight span {
+  color: #ee4d2d;
+  font-size: 1.1rem;
+}
+.address-text {
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* Product Row Premium */
+.order-items-scroll {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+.order-item-premium-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.order-item-premium-row img {
+  width: 85px;
+  height: 85px;
+  object-fit: cover;
+  border-radius: 18px;
+  background: #e2e8f0;
+}
+.item-main-info {
+  flex: 1;
+}
+.item-main-info h4 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+.variant-badge {
+  background: rgba(238, 77, 45, 0.1);
+  color: #ee4d2d;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.unit-price {
+  color: #64748b;
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+.item-subtotal {
+  font-weight: 800;
+  color: #ee4d2d;
+  font-size: 1.1rem;
+}
+
+/* Financial Summary */
+.order-financial-summary {
+  margin-top: 30px;
+  padding-top: 25px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+}
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+.discount-line {
+  color: #10b981;
+}
+
+.grand-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  background: rgba(238, 77, 45, 0.05);
+  padding: 20px;
+  border-radius: 12px;
+}
+.grand-total-row span:first-child {
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+.final-price-text {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ee4d2d;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .detail-grid-layout {
+    grid-template-columns: 1fr;
+  }
+  .detail-info-col {
+    order: 2;
+  }
+  .detail-products-col {
+    order: 1;
+  }
+}
+/* ... Giữ nguyên các phần CSS cũ của bạn ... */
+
+/* Style mới cho phần Payment */
+.payment-status-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 5px 0;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-row label {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.method-val {
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.payment-badge {
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Đã thanh toán - Màu xanh lá (Dùng cho QR) */
+.payment-badge.paid {
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1.5px solid #bbf7d0;
+}
+
+/* Chưa thanh toán - Màu cam (Dùng cho COD) */
+.payment-badge.unpaid {
+  background: #fff7ed;
+  color: #c2410c;
+  border: 1.5px solid #fed7aa;
+}
+
+/* Animation cho loader */
+.premium-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-weight: 900;
+  color: #ee4d2d;
+  letter-spacing: 3px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+}

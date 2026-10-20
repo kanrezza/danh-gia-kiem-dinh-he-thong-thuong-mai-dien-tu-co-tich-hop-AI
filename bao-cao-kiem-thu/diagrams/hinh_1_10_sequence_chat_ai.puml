@@ -1,0 +1,47 @@
+@startuml
+' Hinh 1.10 - So do tuan tu: Tu van san pham bang AI Chatbot (Tiger AI)
+!theme plain
+skinparam dpi 200
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+skinparam shadowing false
+autonumber
+
+actor "Khách hàng" as U
+participant "UnifiedChatWidget" as UI
+participant "aiChatController\n.chatWithAi()" as CTRL
+participant "aiService" as SVC
+database "MySQL" as DB
+participant "Gemini API\n(gemini-2.5-flash)" as GEM
+
+U -> UI : Nhập câu hỏi tư vấn
+UI -> CTRL : POST /api/chat/ai/talk
+
+alt Tin nhắn rỗng
+  CTRL --> UI : 400 - "Tin nhắn không được để trống"
+else Thiếu GEMINI_API_KEY
+  CTRL --> UI : 200 - "Tiger AI đang bảo trì"
+else Hợp lệ
+  CTRL -> DB : getOrCreateSession(userId)
+  DB --> CTRL : sessionId
+  CTRL -> DB : SELECT 10 tin nhắn gần nhất
+  DB --> CTRL : conversationHistory
+  CTRL -> CTRL : Chuẩn hóa history\n(bắt đầu bằng role 'user')
+
+  CTRL -> SVC : getInStockProducts()
+  SVC -> DB : SELECT sản phẩm active,\nstock > 0, LIMIT 60
+  DB --> SVC : danh sách sản phẩm
+  SVC --> CTRL : inStockProducts
+  CTRL -> CTRL : Dựng productCatalogText\n+ systemInstruction
+
+  CTRL -> GEM : startChat(history)\n.sendMessage(message)
+  GEM --> CTRL : aiReply
+
+  CTRL -> DB : INSERT ai_chat_messages (USER)
+  CTRL -> DB : INSERT ai_chat_messages (AI)
+  CTRL -> CTRL : Phát hiện từ khóa "đắt", "ưu đãi"...\n→ gợi ý voucher TIGER_PROMO_10
+  CTRL --> UI : 200 - { reply, voucher }
+  UI -> U : Hiển thị câu trả lời + mã ưu đãi
+end
+
+@enduml

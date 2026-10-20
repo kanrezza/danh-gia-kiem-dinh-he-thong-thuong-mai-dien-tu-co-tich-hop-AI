@@ -1,0 +1,63 @@
+@startuml
+' Hinh 1.20 - So do trien khai he thong
+!theme plain
+skinparam dpi 200
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+skinparam shadowing false
+
+node "Máy trạm người dùng" as CLIENT {
+  artifact "Trình duyệt\nChrome / Edge / Safari" as BR
+  artifact "Bản build React\n(HTML, CSS, JS bundle)" as BUILD
+}
+
+node "Máy chủ ứng dụng" as APPSRV {
+  artifact "Node.js 22 runtime" as NODE
+  artifact "Express server\ncổng 5000" as EXPRESS
+  artifact "Socket.IO server" as SIO
+  folder "uploads/" as UP
+}
+
+node "Máy chủ web tĩnh" as WEBSRV {
+  artifact "React dev server\ncổng 3000\n(proxy → 5000)" as CRA
+}
+
+node "Máy chủ cơ sở dữ liệu" as DBSRV {
+  database "MySQL 8.x\ncổng 3306\nCSDL ecommerce" as MYSQL
+}
+
+cloud "Internet" as NET {
+  node "Google AI Platform" as GOOGLE {
+    artifact "Gemini API" as GEM
+  }
+  node "Máy chủ thư điện tử" as MAILSRV {
+    artifact "SMTP Service" as SMTP
+  }
+}
+
+node "Máy trạm kiểm thử" as TESTSRV {
+  artifact "Jest + Supertest" as JEST
+  artifact "Playwright" as PW
+  artifact "Postman / Newman" as PM
+  artifact "Apache JMeter" as JM
+  artifact "OWASP ZAP" as ZAP
+}
+
+BR --> CRA : HTTP\ncổng 3000
+BUILD ..> BR : tải về
+CRA --> EXPRESS : REST API\n/api/*
+BR --> SIO : WebSocket
+EXPRESS --> MYSQL : TCP 3306\nmysql2
+SIO --> MYSQL
+EXPRESS --> UP : đọc/ghi tệp ảnh
+EXPRESS --> GEM : HTTPS 443
+EXPRESS --> SMTP : SMTP 587
+
+JEST ..> EXPRESS : kiểm thử đơn vị\nvà tích hợp
+PM ..> EXPRESS : kiểm thử API
+PW ..> CRA : kiểm thử giao diện
+JM ..> EXPRESS : kiểm thử hiệu năng
+ZAP ..> CRA : quét bảo mật
+ZAP ..> EXPRESS : quét bảo mật
+
+@enduml

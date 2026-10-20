@@ -1,0 +1,91 @@
+@startuml
+' Hinh 1.18 - So do ERD phan he Nhan su
+!theme plain
+skinparam dpi 200
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+skinparam shadowing false
+hide circle
+
+entity "users" as users {
+  * id : INT <<PK>>
+  --
+  name : VARCHAR(100)
+  email : VARCHAR(100) <<UNIQUE>>
+  # role_id : INT <<FK>>
+  status : VARCHAR(20)
+  is_active : TINYINT
+  # created_by : INT <<FK>>
+  hourly_rate : DECIMAL(10,2)
+  employment_status : VARCHAR(20)
+  probation_start_at : DATETIME
+  official_at : DATETIME
+  probation_hourly_rate : DECIMAL(10,2)
+  official_hourly_rate : DECIMAL(10,2)
+  deleted_at : DATETIME
+}
+
+entity "attendance_sessions" as att {
+  * id : INT <<PK>>
+  --
+  # staff_id : INT <<FK>>
+  check_in_at : DATETIME
+  check_out_at : DATETIME
+  worked_seconds : INT
+  wage_rate : DECIMAL(10,2)
+  status : VARCHAR(20)
+  note : VARCHAR(255)
+  # corrected_by_manager_id : INT <<FK>>
+  corrected_at : DATETIME
+  created_at : TIMESTAMP
+}
+
+entity "shift_registrations" as shifts {
+  * id : INT <<PK>>
+  --
+  # staff_id : INT <<FK>>
+  # manager_id : INT <<FK>>
+  shift_date : DATE
+  start_time : TIME
+  end_time : TIME
+  note : VARCHAR(255)
+  status : VARCHAR(20)
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "staff_requests" as reqs {
+  * id : INT <<PK>>
+  --
+  # staff_id : INT <<FK>>
+  # manager_id : INT <<FK>>
+  request_type : VARCHAR(20)
+  request_date : DATE
+  minutes_late : INT
+  reason : VARCHAR(255)
+  status : VARCHAR(20)
+  manager_note : VARCHAR(255)
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "staff_work_logs" as wlogs {
+  * id : INT <<PK>>
+  --
+  # staff_id : INT <<FK>>
+  # manager_id : INT <<FK>>
+  work_date : DATE
+  hours_worked : DECIMAL(5,2)
+  note : VARCHAR(255)
+  created_at : TIMESTAMP
+}
+
+att   -[hidden]down- reqs
+shifts -[hidden]down- wlogs
+
+users ||--o{ att    : "1 - N  chấm công"
+users ||--o{ shifts : "1 - N  đăng ký ca"
+users ||--o{ reqs   : "1 - N  gửi đơn từ"
+users ||--o{ wlogs  : "1 - N  ghi giờ công"
+
+@enduml

@@ -1,0 +1,247 @@
+/* ================= PAGE LAYOUT ================= */
+.admin-voucher-page {
+  padding: 32px;
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+.admin-voucher-page h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  color: #1e293b;
+}
+
+/* ================= CARD STYLE ================= */
+.voucher-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 32px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f5f9;
+}
+
+.voucher-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #334155;
+  border-left: 4px solid #2563eb;
+  padding-left: 12px;
+}
+
+/* ================= FORM LAYOUT ================= */
+.voucher-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+}
+
+/* INPUTS & SELECTS */
+.input,
+.form-group input,
+.form-group select {
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+  font-size: 14px;
+  color: #1e293b;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.input.error {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+.error-text {
+  color: #ef4444;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* ================= BUTTONS ================= */
+.btn-create {
+  margin-top: 12px;
+  padding: 16px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.btn-create:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
+}
+
+.btn-create:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ================= TABLE DESIGN ================= */
+.table-responsive {
+  overflow-x: auto;
+}
+
+.voucher-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+.voucher-table th {
+  padding: 12px 16px;
+  text-align: left;
+  color: #64748b;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.voucher-table tbody tr {
+  background-color: #ffffff;
+  transition: transform 0.2s ease;
+}
+
+.voucher-table td {
+  padding: 16px;
+  border-top: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 14px;
+  color: #334155;
+}
+
+.voucher-table td:first-child {
+  border-left: 1px solid #f1f5f9;
+  border-radius: 12px 0 0 12px;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.voucher-table td:last-child {
+  border-right: 1px solid #f1f5f9;
+  border-radius: 0 12px 12px 0;
+}
+
+/* ================= COMPONENTS IN TABLE ================= */
+.type-tag {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.type-tag.percent {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+.type-tag.fixed {
+  background: #fef3c7;
+  color: #92400e;
+}
+.type-tag.free_ship {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.status-btn.active {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.status-btn.inactive {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.status-btn:hover {
+  filter: brightness(0.95);
+  transform: scale(1.05);
+}
+
+.quantity-count {
+  font-weight: 600;
+  color: #475569;
+  background: #f1f5f9;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+/* ================= ALERTS ================= */
+.alert {
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.alert.error {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fee2e2;
+}
+.alert.success {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #dcfce7;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-voucher-page {
+    padding: 16px;
+  }
+}

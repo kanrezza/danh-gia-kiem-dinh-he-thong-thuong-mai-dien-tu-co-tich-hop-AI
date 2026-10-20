@@ -1,0 +1,63 @@
+@startuml
+' Hinh 1.11 - So do tuan tu: Cham cong (check-in / check-out) cua nhan vien
+!theme plain
+skinparam dpi 200
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+skinparam shadowing false
+autonumber
+
+actor "Nhân viên" as S
+participant "StaffWorkspace" as UI
+participant "authMiddleware" as AUTH
+participant "userController\n.staffClockIn()" as IN
+participant "userController\n.staffClockOut()" as OUT
+database "MySQL" as DB
+
+== Giai đoạn 1: Check-in ==
+S -> UI : Nhấn "Vào ca"
+UI -> AUTH : POST /api/users/attendance/clock-in
+AUTH -> IN : next() với req.user
+IN -> DB : SELECT role_id, status,\nemployment_status, hourly_rate
+DB --> IN : thông tin nhân viên
+
+alt role_id khác 3 (không phải Staff)
+  IN --> UI : 403 - "Chỉ Staff được chấm công"
+else status khác 'active'
+  IN --> UI : 403 - "Staff chưa active"
+else Hợp lệ
+  IN -> DB : SELECT phiên có status = 'open'
+  alt Còn ca chưa check-out
+    IN --> UI : 400 - "Bạn đang có ca làm chưa check-out"
+  else Không còn ca mở
+    IN -> IN : wage_rate = official ?\nofficial_hourly_rate : probation_hourly_rate
+    IN -> DB : INSERT attendance_sessions\n(staff_id, wage_rate, status = 'open')
+    opt Thử việc chưa có ngày bắt đầu
+      IN -> DB : UPDATE users SET probation_start_at = NOW()
+    end
+    IN --> UI : 201 - { message, session_id }
+  end
+end
+
+== Giai đoạn 2: Check-out ==
+S -> UI : Nhấn "Kết thúc ca"
+UI -> AUTH : POST /api/users/attendance/clock-out
+AUTH -> OUT : next() với req.user
+OUT -> DB : SELECT phiên 'open' mới nhất
+
+alt Không có ca đang mở
+  OUT --> UI : 400 - "Không có ca làm đang mở"
+else Có ca đang mở
+  OUT -> DB : UPDATE attendance_sessions\nSET check_out_at = NOW(),\nworked_seconds = TIMESTAMPDIFF(...),\nstatus = 'closed'
+  opt Nhân viên đang thử việc
+    OUT -> DB : SELECT COUNT(DISTINCT DATE(check_in_at))
+    DB --> OUT : totalDays
+    alt totalDays >= 3
+      OUT -> OUT : Đủ điều kiện xét chính thức
+    end
+  end
+  OUT --> UI : 200 - "Check-out thành công"
+  UI -> S : Cập nhật giờ công và lương tạm tính
+end
+
+@enduml

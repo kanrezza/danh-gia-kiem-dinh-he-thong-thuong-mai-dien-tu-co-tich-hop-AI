@@ -1,0 +1,76 @@
+@startuml
+' Hinh 1.4 - Use Case chi tiet cho tac nhan Nhan vien (Staff)
+!theme plain
+skinparam dpi 200
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 13
+skinparam shadowing false
+skinparam packageStyle rectangle
+left to right direction
+
+actor "Nhân viên" as STA
+actor "Khách hàng" as CUS
+actor "Quản lý" as MAN
+actor "Gemini AI" as AI <<system>>
+actor "Dịch vụ Email" as MAIL <<system>>
+
+rectangle "Phân hệ Nhân viên" {
+  usecase "Đăng nhập không gian làm việc" as S1
+
+  usecase "Xem danh sách đơn hàng" as S2
+  usecase "Cập nhật trạng thái đơn" as S2a
+  usecase "Hủy đơn (kèm lý do)" as S2b
+  usecase "Gửi hóa đơn cho khách" as S2c
+  usecase "Yêu cầu hoàn tiền" as S2d
+
+  usecase "Tiếp nhận hội thoại" as S3
+  usecase "Trả lời khách hàng" as S3a
+  usecase "Nhận gợi ý trả lời từ AI" as S3b
+  usecase "Xem đơn hàng của khách" as S3c
+
+  usecase "Chấm công vào ca" as S4
+  usecase "Chấm công kết thúc ca" as S4a
+  usecase "Xem phiên chấm công" as S4b
+
+  usecase "Đăng ký ca làm việc" as S5
+  usecase "Hủy đăng ký ca" as S5a
+  usecase "Xem ca làm của mình" as S5b
+
+  usecase "Gửi đơn xin đi muộn" as S6
+  usecase "Gửi đơn xin nghỉ" as S6a
+  usecase "Theo dõi trạng thái đơn" as S6b
+
+  usecase "Xem bảng lương cá nhân" as S7
+  usecase "Xem chi tiết lương" as S7a
+}
+
+STA --> S1
+STA --> S2
+STA --> S3
+STA --> S4
+STA --> S5
+STA --> S6
+STA --> S7
+
+S2 ..> S2a : <<extend>>
+S2 ..> S2b : <<extend>>
+S2 ..> S2c : <<extend>>
+S2 ..> S2d : <<extend>>
+S3 ..> S3a : <<include>>
+S3 ..> S3b : <<extend>>
+S3 ..> S3c : <<extend>>
+S4 ..> S4a : <<include>>
+S4 ..> S4b : <<extend>>
+S5 ..> S5a : <<extend>>
+S5 ..> S5b : <<include>>
+S6 ..> S6a : <<extend>>
+S6 ..> S6b : <<include>>
+S7 ..> S7a : <<include>>
+
+S3a --> CUS
+S2c --> MAIL
+S3b --> AI
+S5 --> MAN
+S6 --> MAN
+
+@enduml

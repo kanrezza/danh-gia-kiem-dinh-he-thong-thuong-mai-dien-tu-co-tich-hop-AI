@@ -1,0 +1,72 @@
+@startuml
+' Hinh 1.2 - Use Case tong quat: phan he Van hanh, Nhan su va Quan tri
+!theme plain
+skinparam dpi 200
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam usecase {
+  BackgroundColor #FFFFFF
+  BorderColor #2C3E50
+}
+left to right direction
+
+actor "Nhân viên\n(Staff)" as STA
+actor "Quản lý\n(Manager)" as MAN
+actor "Quản trị viên\n(Admin)" as ADM
+actor "Dịch vụ Email\n(SMTP)" as MAIL <<system>>
+
+rectangle "TIGER SHOP - PHÂN HỆ VẬN HÀNH VÀ QUẢN TRỊ" {
+
+  package "Vận hành" {
+    usecase "UC11 - Xử lý đơn hàng" as UC11
+    usecase "UC12 - Quản lý sản phẩm" as UC12
+    usecase "UC13 - Duyệt sản phẩm" as UC13
+    usecase "UC14 - Quản lý tồn kho" as UC14
+  }
+
+  package "Nhân sự" {
+    usecase "UC15 - Chấm công" as UC15
+    usecase "UC16 - Đăng ký ca làm" as UC16
+    usecase "UC17 - Gửi đơn từ" as UC17
+    usecase "UC18 - Duyệt nhân sự" as UC18
+    usecase "UC19 - Tính lương" as UC19
+  }
+
+  package "Quản trị" {
+    usecase "UC23 - Quản lý người dùng" as UC23
+    usecase "UC24 - Xem thống kê - báo cáo" as UC24
+    usecase "UC25 - Xem nhật ký hệ thống" as UC25
+  }
+}
+
+STA --> UC11
+STA --> UC15
+STA --> UC16
+STA --> UC17
+
+MAN --> UC11
+MAN --> UC12
+MAN --> UC14
+MAN --> UC16
+MAN --> UC18
+MAN --> UC19
+MAN --> UC24
+
+ADM --> UC13
+ADM --> UC23
+ADM --> UC24
+ADM --> UC25
+
+UC11 --> MAIL
+UC12 ..> UC13 : <<include>>
+UC19 ..> UC15 : <<include>>
+
+note bottom of UC13
+  Mọi người dùng ở phân hệ này
+  đều phải thực hiện UC02 - Đăng nhập
+  trước khi truy cập chức năng
+end note
+
+@enduml

@@ -1,0 +1,23 @@
+# Thư viện, cài lại bằng npm ci
+node_modules/
+
+# Biến môi trường chứa khóa thật; giữ lại tệp mẫu .env.example
+.env
+.env.*
+!.env.example
+
+# Ảnh người dùng tải lên khi chạy hệ thống
+backend/uploads/
+
+# Kết quả sinh ra khi chạy lại; bản dùng cho báo cáo nằm trong "Hồ sơ nộp bài"
+backend/coverage/
+*.log
+bao-cao-kiem-thu/performance/tokens.csv
+
+# Tệp hệ điều hành, tệp khóa của Office, cấu hình công cụ soạn thảo
+.DS_Store
+Thumbs.db
+~$*
+.continue/
+.claude/
+.sixth/
