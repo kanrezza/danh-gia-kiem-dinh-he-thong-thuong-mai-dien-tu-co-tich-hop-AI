@@ -1,0 +1,57 @@
+@startuml
+' Hinh 1.8 - So do tuan tu: Dang nhap va phan quyen
+!theme plain
+skinparam dpi 200
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+skinparam shadowing false
+autonumber
+
+actor "Người dùng" as U
+participant "Login.js\n(React)" as UI
+participant "authController\n.login()" as CTRL
+participant "User Model" as MODEL
+database "MySQL" as DB
+participant "bcrypt" as BC
+participant "jsonwebtoken" as JWT
+participant "localStorage" as LS
+
+U -> UI : Nhập email + mật khẩu
+UI -> CTRL : POST /api/auth/login
+
+alt Thiếu email hoặc mật khẩu
+  CTRL --> UI : 400 - "Thiếu email hoặc mật khẩu"
+else Đủ dữ liệu
+  CTRL -> MODEL : findByEmail(email)
+  MODEL -> DB : SELECT u.*, r.name AS role_name\nFROM users u JOIN roles r ...
+  DB --> MODEL : rows
+  MODEL --> CTRL : result
+
+  alt Không tìm thấy tài khoản
+    CTRL --> UI : 401 - "User not found"
+  else Tìm thấy
+    CTRL -> BC : compareSync(password, user.password)
+    BC --> CTRL : isMatch
+
+    alt Sai mật khẩu
+      CTRL --> UI : 401 - "Wrong password"
+    else Đúng mật khẩu
+      CTRL -> JWT : sign({ id, role, is_active },\nJWT_SECRET, { expiresIn: "1h" })
+      JWT --> CTRL : token
+      CTRL --> UI : 200 - { token, role, user }
+      UI -> LS : setItem("token"), setItem("user")
+      UI -> UI : Điều hướng theo vai trò
+
+      note right of UI
+        ADMIN    → /admin/dashboard
+        MANAGER  → /manager/workspace
+        STAFF    → /staff/workspace
+        CUSTOMER → /home
+      end note
+
+      UI -> U : Hiển thị giao diện tương ứng
+    end
+  end
+end
+
+@enduml

@@ -1,0 +1,85 @@
+@startuml
+' Hinh 1.5 - Use Case chi tiet cho tac nhan Quan ly (Manager)
+!theme plain
+skinparam dpi 200
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 13
+skinparam shadowing false
+skinparam packageStyle rectangle
+left to right direction
+
+actor "Quản lý" as MAN
+actor "Quản trị viên" as ADM
+actor "Nhân viên" as STA
+
+rectangle "Phân hệ Quản lý" {
+  usecase "Đăng nhập không gian quản lý" as M1
+
+  usecase "Thêm sản phẩm mới" as M2
+  usecase "Sửa thông tin sản phẩm" as M2a
+  usecase "Xóa mềm sản phẩm" as M2b
+  usecase "Khôi phục sản phẩm" as M2c
+  usecase "Quản lý biến thể sản phẩm" as M2d
+  usecase "Gửi sản phẩm chờ duyệt" as M2e
+
+  usecase "Quản lý danh mục" as M3
+
+  usecase "Xem cảnh báo tồn kho" as M4
+  usecase "Nhập thêm hàng" as M4a
+  usecase "Xem nhật ký kho" as M4b
+
+  usecase "Quản lý đơn hàng" as M5
+  usecase "Cập nhật trạng thái đơn" as M5a
+
+  usecase "Tạo tài khoản nhân viên" as M6
+  usecase "Duyệt nhân viên đăng ký" as M6a
+  usecase "Chuyển thử việc sang chính thức" as M6b
+  usecase "Cập nhật thông tin công việc" as M6c
+
+  usecase "Duyệt ca làm việc" as M7
+  usecase "Phân ca cho nhân viên" as M7a
+  usecase "Xem lịch ca theo ngày" as M7b
+
+  usecase "Duyệt đơn từ nhân viên" as M8
+  usecase "Sửa lỗi chấm công" as M8a
+
+  usecase "Xem bảng lương nhân viên" as M9
+  usecase "Ghi nhận giờ công" as M9a
+
+  usecase "Quản lý voucher" as M10
+  usecase "Xem thống kê doanh thu" as M11
+}
+
+MAN --> M1
+MAN --> M2
+MAN --> M3
+MAN --> M4
+MAN --> M5
+MAN --> M6
+MAN --> M7
+MAN --> M8
+MAN --> M9
+MAN --> M10
+MAN --> M11
+
+M2 ..> M2e : <<include>>
+M2 ..> M2a : <<extend>>
+M2 ..> M2b : <<extend>>
+M2b ..> M2c : <<extend>>
+M2 ..> M2d : <<extend>>
+M4 ..> M4a : <<extend>>
+M4a ..> M4b : <<include>>
+M5 ..> M5a : <<extend>>
+M6 ..> M6a : <<extend>>
+M6 ..> M6b : <<extend>>
+M6 ..> M6c : <<extend>>
+M7 ..> M7a : <<extend>>
+M7 ..> M7b : <<include>>
+M8 ..> M8a : <<extend>>
+M9 ..> M9a : <<include>>
+
+M2e --> ADM
+M7 --> STA
+M8 --> STA
+
+@enduml

@@ -1,0 +1,175 @@
+@startuml
+' Hinh 1.17 - So do ERD phan he Ban hang
+!theme plain
+skinparam dpi 200
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 11
+skinparam shadowing false
+hide circle
+skinparam linetype ortho
+
+entity "roles" as roles {
+  * id : INT <<PK>>
+  --
+  name : VARCHAR(50)
+}
+
+entity "users" as users {
+  * id : INT <<PK>>
+  --
+  name : VARCHAR(100)
+  email : VARCHAR(100) <<UNIQUE>>
+  password : VARCHAR(255)
+  phone : VARCHAR(20)
+  avatar : VARCHAR(255)
+  birthday : DATE
+  # role_id : INT <<FK>>
+  status : VARCHAR(20)
+  is_active : TINYINT
+  # created_by : INT <<FK>>
+  deleted_at : DATETIME
+}
+
+entity "categories" as categories {
+  * id : INT <<PK>>
+  --
+  name : VARCHAR(255)
+  display_type : VARCHAR(50)
+}
+
+entity "products" as products {
+  * id : INT <<PK>>
+  --
+  name : VARCHAR(255)
+  price : DECIMAL(12,2)
+  original_price : DECIMAL(12,2)
+  description : TEXT
+  stock : INT
+  image : VARCHAR(255)
+  # category_id : INT <<FK>>
+  # manager_id : INT <<FK>>
+  status : VARCHAR(20)
+  display_type : VARCHAR(50)
+  specifications : JSON
+  embedding : TEXT
+  rejection_reason : VARCHAR(255)
+  deleted_at : DATETIME
+  created_at : TIMESTAMP
+}
+
+entity "product_variants" as variants {
+  * id : INT <<PK>>
+  --
+  # product_id : INT <<FK>>
+  sku : VARCHAR(100)
+  variant_name : VARCHAR(255)
+  price : DECIMAL(12,2)
+  stock : INT
+  created_at : TIMESTAMP
+}
+
+entity "product_reviews" as reviews {
+  * id : INT <<PK>>
+  --
+  # product_id : INT <<FK>>
+  # user_id : INT <<FK>>
+  rating : INT
+  comment : TEXT
+  image_url : VARCHAR(255)
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+  --
+  UNIQUE (product_id, user_id)
+}
+
+entity "orders" as orders {
+  * id : INT <<PK>>
+  --
+  # user_id : INT <<FK>>
+  total : DECIMAL(10,2)
+  status : VARCHAR(50)
+  receiver_name : VARCHAR(100)
+  receiver_phone : VARCHAR(20)
+  shipping_address : VARCHAR(255)
+  expected_delivery : DATE
+  payment_method : VARCHAR(20)
+  created_at : TIMESTAMP
+}
+
+entity "order_items" as items {
+  * id : INT <<PK>>
+  --
+  # order_id : INT <<FK>>
+  # product_id : INT <<FK>>
+  # variant_id : INT <<FK>>
+  quantity : INT
+  price : DECIMAL(10,2)
+  product_name : VARCHAR(255)
+  product_image : VARCHAR(255)
+}
+
+entity "order_logs" as ologs {
+  * id : INT <<PK>>
+  --
+  # order_id : INT <<FK>>
+  # user_id : INT <<FK>>
+  action : VARCHAR(50)
+  old_value : VARCHAR(255)
+  new_value : VARCHAR(255)
+  note : TEXT
+  created_at : TIMESTAMP
+}
+
+entity "vouchers" as vouchers {
+  * voucher_id : INT <<PK>>
+  --
+  code : VARCHAR(50) <<UNIQUE>>
+  type : VARCHAR(20)
+  value : DECIMAL(10,2)
+  min_order_value : DECIMAL(10,2)
+  max_discount : DECIMAL(10,2)
+  quantity : INT
+  used : INT
+  start_date : DATE
+  end_date : DATE
+  status : VARCHAR(20)
+  source : VARCHAR(30)
+}
+
+entity "user_vouchers" as uvouchers {
+  * id : INT <<PK>>
+  --
+  # user_id : INT <<FK>>
+  # voucher_id : INT <<FK>>
+  used : TINYINT
+  received_at : TIMESTAMP
+}
+
+entity "return_requests" as returns {
+  * id : INT <<PK>>
+  --
+  # user_id : INT <<FK>>
+  # order_id : INT <<FK>>
+  reason : TEXT
+  status : VARCHAR(50)
+  created_at : TIMESTAMP
+}
+
+roles     ||--o{ users     : "1 vai trò - N người dùng"
+users     ||--o{ orders    : "1 - N"
+orders    ||--|{ items     : "1 - N"
+products  ||--o{ items     : "1 - N"
+products  ||--o{ variants  : "1 - N"
+variants  |o--o{ items     : "0..1 - N"
+categories ||--o{ products : "1 - N"
+users     ||--o{ products  : "quản lý"
+users     ||--o{ reviews   : "1 - N"
+products  ||--o{ reviews   : "1 - N"
+users     ||--o{ uvouchers : "1 - N"
+vouchers  ||--o{ uvouchers : "1 - N"
+orders    ||--o{ ologs     : "1 - N"
+users     ||--o{ ologs     : "1 - N"
+users     ||--o{ returns   : "1 - N"
+orders    ||--o{ returns   : "1 - N"
+
+@enduml

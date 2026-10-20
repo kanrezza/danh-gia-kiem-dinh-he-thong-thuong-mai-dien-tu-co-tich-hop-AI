@@ -1,0 +1,68 @@
+@startuml
+' Hinh 1.1 - Use Case tong quat: phan he Khach hang va Ho tro
+!theme plain
+skinparam dpi 200
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam usecase {
+  BackgroundColor #FFFFFF
+  BorderColor #2C3E50
+}
+left to right direction
+
+actor "Khách hàng\n(Customer)" as CUS
+actor "Nhân viên\n(Staff)" as STA
+actor "Gemini AI\nService" as AI <<system>>
+actor "Dịch vụ Email\n(SMTP)" as MAIL <<system>>
+
+rectangle "TIGER SHOP - PHÂN HỆ KHÁCH HÀNG" {
+
+  package "Quản lý tài khoản" {
+    usecase "UC01 - Đăng ký tài khoản" as UC01
+    usecase "UC02 - Đăng nhập" as UC02
+    usecase "UC03 - Đăng xuất" as UC03
+    usecase "UC04 - Quản lý hồ sơ cá nhân" as UC04
+  }
+
+  package "Bán hàng" {
+    usecase "UC05 - Tra cứu sản phẩm" as UC05
+    usecase "UC06 - Quản lý giỏ hàng" as UC06
+    usecase "UC07 - Đặt hàng" as UC07
+    usecase "UC08 - Theo dõi đơn hàng" as UC08
+    usecase "UC09 - Đánh giá sản phẩm" as UC09
+    usecase "UC10 - Quản lý voucher" as UC10
+  }
+
+  package "Hỗ trợ khách hàng" {
+    usecase "UC20 - Chat với AI Chatbot" as UC20
+    usecase "UC21 - Chat với nhân viên" as UC21
+    usecase "UC22 - Nhận thông báo" as UC22
+  }
+}
+
+CUS --> UC01
+CUS --> UC02
+CUS --> UC03
+CUS --> UC04
+CUS --> UC05
+CUS --> UC06
+CUS --> UC07
+CUS --> UC08
+CUS --> UC09
+CUS --> UC10
+CUS --> UC20
+CUS --> UC21
+CUS --> UC22
+
+UC21 <-- STA
+UC20 --> AI
+UC01 --> MAIL
+
+UC07 ..> UC02 : <<include>>
+UC07 ..> UC10 : <<include>>
+UC09 ..> UC08 : <<include>>
+UC21 ..> UC20 : <<extend>>
+
+@enduml

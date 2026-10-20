@@ -1,0 +1,168 @@
+/* Login.css */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap");
+
+.login-page {
+  min-height: 100vh;
+  background: #f8fafc; /* Nền tối sâu chuyên nghiệp */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hiệu ứng đốm sáng chạy nền */
+.login-page::before,
+.login-page::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: 0;
+  opacity: 0.3;
+}
+.login-page::before {
+  background: #ee4d2d;
+  top: -150px;
+  left: -150px;
+}
+.login-page::after {
+  background: #ff7337;
+  bottom: -150px;
+  right: -150px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+  text-align: center;
+  animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.login-card h2 {
+  color: #0f172a;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+}
+
+/* Thông báo lỗi sắc nét */
+.error-msg {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.form-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  color: #334155;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  margin-left: 4px;
+}
+
+.form-group input {
+  width: 100%;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: #0f172a;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-group input::placeholder {
+  color: #64748b;
+}
+
+.form-group input:focus {
+  border-color: #ee4d2d;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(238, 77, 45, 0.1);
+}
+
+/* Nút Đăng nhập Premium */
+.login-btn {
+  width: 100%;
+  background: #ee4d2d;
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  background: #d44225;
+  box-shadow: 0 8px 15px rgba(238, 77, 45, 0.3);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+.register-text {
+  margin-top: 25px;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.register-text a {
+  color: #ee4d2d;
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.register-text a:hover {
+  color: #d44225;
+  text-decoration: underline;
+}

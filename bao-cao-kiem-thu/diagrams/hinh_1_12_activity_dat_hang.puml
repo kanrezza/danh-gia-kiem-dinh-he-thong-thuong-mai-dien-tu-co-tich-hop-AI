@@ -1,0 +1,54 @@
+@startuml
+' Hinh 1.12 - So do hoat dong: Quy trinh dat hang
+!theme plain
+skinparam dpi 200
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 13
+skinparam shadowing false
+
+|#F4F6F7|Khách hàng|
+start
+:Duyệt sản phẩm và xem chi tiết;
+:Chọn biến thể (nếu có)\nvà thêm vào giỏ hàng;
+:Nhập địa chỉ nhận hàng, chọn voucher\nvà phương thức thanh toán;
+:Nhấn nút Đặt hàng;
+
+|#EBF5FB|Frontend (React)|
+if (Dữ liệu hợp lệ?) then (không)
+  :Hiển thị lỗi tại biểu mẫu;
+  stop
+else (có)
+endif
+:Gửi POST /api/orders kèm JWT;
+
+|#E8F8F5|Backend (Express)|
+if (Xác thực JWT và\ntài khoản hợp lệ?) then (không)
+  :Trả về mã 401 hoặc 403;
+  stop
+else (có)
+endif
+:Mở transaction;
+
+|#FEF9E7|MySQL|
+:Ghi đơn hàng và chi tiết đơn hàng;
+:Trừ tồn kho với điều kiện\nstock >= số lượng đặt;
+
+|#E8F8F5|Backend (Express)|
+if (Tồn kho đủ?) then (không)
+  :ROLLBACK và trả về "Hết hàng";
+  stop
+else (có)
+endif
+if (Voucher còn hiệu lực?) then (không)
+  :ROLLBACK và trả về\n"Voucher không khả dụng";
+  stop
+else (có hoặc không dùng voucher)
+endif
+:COMMIT transaction;
+:Tạo tin nhắn hệ thống\nvà phát sự kiện Socket.IO;
+
+|#F4F6F7|Khách hàng|
+:Nhận mã đơn hàng\nvà ngày giao dự kiến;
+stop
+
+@enduml

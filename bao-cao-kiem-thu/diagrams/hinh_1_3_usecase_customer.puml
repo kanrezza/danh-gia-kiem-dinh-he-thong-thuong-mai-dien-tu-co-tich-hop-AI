@@ -1,0 +1,85 @@
+@startuml
+' Hinh 1.3 - Use Case chi tiet cho tac nhan Khach hang (Customer)
+!theme plain
+skinparam dpi 200
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 13
+skinparam shadowing false
+skinparam packageStyle rectangle
+left to right direction
+
+actor "Khách hàng" as CUS
+actor "Gemini AI" as AI <<system>>
+actor "Nhân viên" as STA
+
+rectangle "Phân hệ Khách hàng" {
+  usecase "Đăng ký tài khoản" as U1
+  usecase "Nhận voucher chào mừng" as U1a
+  usecase "Đăng nhập / Đăng xuất" as U2
+  usecase "Xem - sửa hồ sơ cá nhân" as U3
+  usecase "Đổi mật khẩu" as U3a
+  usecase "Cập nhật ảnh đại diện" as U3b
+
+  usecase "Xem trang chủ" as U4
+  usecase "Duyệt danh sách sản phẩm" as U5
+  usecase "Lọc theo danh mục" as U5a
+  usecase "Tìm kiếm sản phẩm" as U5b
+  usecase "Xem chi tiết sản phẩm" as U6
+  usecase "Chọn biến thể sản phẩm" as U6a
+
+  usecase "Thêm vào giỏ hàng" as U7
+  usecase "Cập nhật - xóa giỏ hàng" as U7a
+  usecase "Thanh toán đơn hàng" as U8
+  usecase "Áp dụng voucher" as U8a
+  usecase "Chọn phương thức thanh toán" as U8b
+
+  usecase "Xem lịch sử đơn hàng" as U9
+  usecase "Xem chi tiết đơn hàng" as U9a
+  usecase "Hủy đơn hàng" as U9b
+  usecase "Yêu cầu đổi trả - bảo hành" as U9c
+
+  usecase "Đánh giá sản phẩm" as U10
+  usecase "Xem kho voucher" as U11
+  usecase "Nhận voucher công khai" as U11a
+  usecase "Xem thông báo" as U12
+
+  usecase "Chat với Tiger AI" as U13
+  usecase "Xem lịch sử chat AI" as U13a
+  usecase "Yêu cầu gặp nhân viên" as U14
+}
+
+CUS --> U1
+CUS --> U2
+CUS --> U3
+CUS --> U4
+CUS --> U5
+CUS --> U6
+CUS --> U7
+CUS --> U8
+CUS --> U9
+CUS --> U10
+CUS --> U11
+CUS --> U12
+CUS --> U13
+CUS --> U14
+
+U1 ..> U1a : <<include>>
+U3 ..> U3a : <<extend>>
+U3 ..> U3b : <<extend>>
+U5 ..> U5a : <<extend>>
+U5 ..> U5b : <<extend>>
+U6 ..> U6a : <<include>>
+U7 ..> U7a : <<extend>>
+U8 ..> U8a : <<extend>>
+U8 ..> U8b : <<include>>
+U9 ..> U9a : <<include>>
+U9a ..> U9b : <<extend>>
+U9a ..> U9c : <<extend>>
+U10 ..> U9 : <<include>>
+U11 ..> U11a : <<extend>>
+U13 ..> U13a : <<include>>
+
+U13 --> AI
+U14 --> STA
+
+@enduml

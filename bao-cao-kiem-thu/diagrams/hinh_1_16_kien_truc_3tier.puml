@@ -1,0 +1,82 @@
+@startuml
+' Hinh 1.16 - Kien truc 3 tang cua he thong
+!theme plain
+skinparam dpi 200
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+skinparam shadowing false
+skinparam componentStyle rectangle
+
+package "TẦNG TRÌNH DIỄN (Presentation Tier)" #EBF5FB {
+  component "Trình duyệt web\nChrome / Edge / Safari" as BROWSER
+  package "Ứng dụng React 19 (SPA)" {
+    component "React Router 7\n(điều hướng + route bảo vệ)" as ROUTER
+    component "Trang Customer\nHome, Shop, Cart, Checkout" as P_CUS
+    component "Trang Staff\nWorkspace, Chat, Attendance" as P_STA
+    component "Trang Manager\nProducts, Payroll, Shifts" as P_MAN
+    component "Trang Admin\nDashboard, Users, Stats" as P_ADM
+    component "UnifiedChatWidget" as W_CHAT
+    component "api.js / chatApi.js\n(HTTP client + JWT)" as HTTP
+    component "socket.io-client" as WS_C
+  }
+}
+
+package "TẦNG NGHIỆP VỤ (Application Tier)" #E8F8F5 {
+  package "Node.js 22 + Express 4" {
+    component "Middleware\nCORS, JSON, rateLimit" as MW
+    component "authMiddleware\n(xác thực JWT)" as MW_AUTH
+    component "roleMiddleware\n(phân quyền 4 vai trò)" as MW_ROLE
+    component "uploadMiddleware\n(Multer - ảnh)" as MW_UP
+
+    component "Routes\n13 nhóm - 123 điểm cuối" as ROUTES
+    component "Controllers\nauth, product, order, user,\nvoucher, chat, aiChat, ..." as CTRL
+    component "Models\nUser, Product, Chat" as MODELS
+    component "Services\naiService, mailService,\nvoucherService" as SERVICES
+    component "Socket.IO Server\n(chat thời gian thực)" as WS_S
+    component "Cron nội bộ\n(tặng voucher sinh nhật)" as CRON
+  }
+}
+
+package "TẦNG DỮ LIỆU (Data Tier)" #FEF9E7 {
+  database "MySQL 8.x\nCơ sở dữ liệu ecommerce\n(23 bảng)" as DB
+  folder "Thư mục uploads/\n(ảnh sản phẩm, avatar)" as FS
+}
+
+cloud "Dịch vụ bên ngoài" #FDEDEC {
+  component "Google Gemini API\ngemini-2.5-flash\ngemini-embedding-001" as GEMINI
+  component "SMTP\n(Nodemailer)" as SMTP
+}
+
+BROWSER --> ROUTER
+ROUTER --> P_CUS
+ROUTER --> P_STA
+ROUTER --> P_MAN
+ROUTER --> P_ADM
+P_CUS --> W_CHAT
+P_CUS --> HTTP
+P_STA --> HTTP
+P_MAN --> HTTP
+P_ADM --> HTTP
+W_CHAT --> WS_C
+
+HTTP --> MW : HTTPS / JSON\nREST API
+WS_C --> WS_S : WebSocket
+
+MW --> MW_AUTH
+MW_AUTH --> MW_ROLE
+MW_ROLE --> ROUTES
+MW_UP --> ROUTES
+ROUTES --> CTRL
+CTRL --> MODELS
+CTRL --> SERVICES
+CTRL --> WS_S
+CRON --> SERVICES
+
+MODELS --> DB : mysql2\n(prepared statement)
+SERVICES --> DB
+WS_S --> DB
+MW_UP --> FS
+SERVICES --> GEMINI : HTTPS
+SERVICES --> SMTP : SMTP
+
+@enduml

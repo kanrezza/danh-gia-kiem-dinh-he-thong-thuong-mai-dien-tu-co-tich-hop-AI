@@ -1,0 +1,52 @@
+@startuml
+' Hinh 1.13 - So do hoat dong: Quy trinh dang va duyet san pham
+!theme plain
+skinparam dpi 200
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+skinparam shadowing false
+
+|#EBF5FB|Quản lý (Manager)|
+start
+:Mở form thêm sản phẩm;
+:Nhập tên, giá, mô tả, tồn kho, danh mục;
+:Tải ảnh sản phẩm lên;
+
+|#E8F8F5|Hệ thống|
+:Kiểm tra định dạng ảnh\n(jpg, png, webp - tối đa 5MB);
+if (Ảnh hợp lệ?) then (không)
+  :Báo lỗi định dạng tệp;
+  stop
+else (có)
+endif
+:Lưu sản phẩm với status = 'pending';
+:Ghi nhật ký hệ thống;
+:Gửi thông báo tới Quản trị viên;
+
+|#FEF9E7|Quản trị viên (Admin)|
+:Mở danh sách sản phẩm chờ duyệt;
+:Xem chi tiết sản phẩm;
+if (Sản phẩm đạt yêu cầu?) then (đạt)
+  :Nhấn "Duyệt";
+  |#E8F8F5|Hệ thống|
+  :Cập nhật status = 'active';
+  :Sản phẩm hiển thị trên gian hàng;
+else (không đạt)
+  |#FEF9E7|Quản trị viên (Admin)|
+  :Nhập lý do từ chối;
+  |#E8F8F5|Hệ thống|
+  :Cập nhật status = 'rejected'\nvà lưu rejection_reason;
+endif
+:Ghi nhật ký quyết định duyệt;
+:Gửi thông báo kết quả cho Quản lý;
+
+|#EBF5FB|Quản lý (Manager)|
+:Xem kết quả duyệt;
+if (Bị từ chối?) then (có)
+  :Chỉnh sửa và gửi duyệt lại;
+  detach
+else (không)
+endif
+stop
+
+@enduml

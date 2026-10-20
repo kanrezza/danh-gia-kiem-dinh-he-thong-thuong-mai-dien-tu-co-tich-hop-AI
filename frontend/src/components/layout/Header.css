@@ -1,0 +1,189 @@
+.header {
+  height: 70px;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
+}
+
+/* ===== LEFT ===== */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #111;
+}
+
+.nav a {
+  margin-right: 20px;
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+}
+
+.nav a:hover {
+  color: #2563eb;
+}
+
+/* 🎁 VOUCHER LINK */
+.voucher-link {
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white !important;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.voucher-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.35);
+}
+
+/* ===== CENTER ===== */
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.header-search {
+  width: 320px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  transition: box-shadow 0.25s ease;
+}
+
+.header-search:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+}
+
+/* ===== RIGHT ===== */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ===== CART ===== */
+.cart-btn {
+  position: relative;
+  font-size: 22px;
+  text-decoration: none;
+  color: #111;
+}
+
+/* BADGE ĐỎ */
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: #dc2626;
+  color: white;
+  font-size: 12px;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+/* ===== USER ===== */
+.user-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-name {
+  font-weight: 600;
+  color: #333;
+  background: #f1f1f1;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+/* ===== LOGOUT ===== */
+.logout-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+}
+
+/* ===== LOGIN ===== */
+.login-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: #2563eb;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Wishlist Badge */
+.wishlist-btn {
+  position: relative;
+  text-decoration: none;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.wishlist-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ff4d4f;
+  color: white;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+/* Cart Icon Transition cho hiệu ứng bay */
+.cart-icon-nav {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Reuse hiệu ứng rung bump đã viết trước đó hoặc làm hiệu ứng Pop mượt hơn */
+@keyframes popEffect {
+  0% { transform: scale(1); }
+  20% { transform: scale(1.3) rotate(-5deg); }
+  40% { transform: scale(0.9) rotate(5deg); }
+  60% { transform: scale(1.15) rotate(-3deg); }
+  80% { transform: scale(0.95) rotate(2deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+.cart-icon-nav.bump-pop {
+  animation: popEffect 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}

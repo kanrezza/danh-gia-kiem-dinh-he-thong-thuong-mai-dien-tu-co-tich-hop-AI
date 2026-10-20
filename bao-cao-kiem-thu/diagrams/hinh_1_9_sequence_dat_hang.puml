@@ -1,0 +1,77 @@
+@startuml
+' Hinh 1.9 - So do tuan tu: Dat hang co ap dung voucher (transaction)
+!theme plain
+skinparam dpi 200
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+skinparam shadowing false
+autonumber
+
+actor "Khách hàng" as U
+participant "Checkout.js" as UI
+participant "authMiddleware" as AUTH
+participant "orderController\n.createOrder()" as CTRL
+database "MySQL\n(InnoDB)" as DB
+participant "Chat Model" as CHAT
+participant "Socket.IO" as IO
+
+U -> UI : Xác nhận đặt hàng\n(items, địa chỉ, voucher, PTTT)
+UI -> AUTH : POST /api/orders\nAuthorization: Bearer <token>
+AUTH -> AUTH : jwt.verify(token, JWT_SECRET)
+AUTH -> DB : SELECT trạng thái tài khoản
+
+alt Token sai / hết hạn
+  AUTH --> UI : 401 - "Token không hợp lệ"
+else Tài khoản bị khóa
+  AUTH --> UI : 403 - "Tài khoản của bạn đã bị khóa"
+else Hợp lệ
+  AUTH -> CTRL : next() với req.user
+  CTRL -> CTRL : Kiểm tra items, total,\nshipping_address
+
+  alt Dữ liệu không hợp lệ
+    CTRL --> UI : 400 - Thông báo lỗi tương ứng
+  else Dữ liệu hợp lệ
+    CTRL -> DB : getConnection() + BEGIN TRANSACTION
+    activate DB
+
+    CTRL -> DB : SELECT name, phone FROM users
+    CTRL -> DB : INSERT INTO orders (status = 'pending')
+    DB --> CTRL : orderId
+    CTRL -> DB : INSERT INTO order_items (bulk)
+
+    loop Với mỗi sản phẩm trong giỏ
+      alt Có biến thể
+        CTRL -> DB : UPDATE product_variants\nSET stock = stock - ?\nWHERE id = ? AND stock >= ?
+      else Sản phẩm đơn
+        CTRL -> DB : UPDATE products\nSET stock = stock - ?\nWHERE id = ? AND stock >= ?
+      end
+      alt affectedRows = 0
+        CTRL -> DB : ROLLBACK
+        CTRL --> UI : 500 - "Hết hàng"
+      end
+    end
+
+    opt Có áp dụng voucher
+      CTRL -> DB : UPDATE user_vouchers JOIN vouchers\nSET used = 1, v.used = v.used + 1
+      alt Voucher đã dùng / hết hạn
+        CTRL -> DB : ROLLBACK
+        CTRL --> UI : 500 - "Voucher không khả dụng"
+      end
+    end
+
+    CTRL -> DB : COMMIT
+    deactivate DB
+
+    CTRL -> CHAT : getOrCreateThreadByUserId(userId)
+    CHAT -> DB : SELECT / INSERT threads
+    CHAT --> CTRL : thread
+    CTRL -> CHAT : createMessage(SYSTEM, "Đơn hàng #id thành công")
+    CTRL -> IO : emit("new_message", thread.id)
+    IO --> UI : Cập nhật hộp thoại realtime
+
+    CTRL --> UI : 200 - { success, orderId, expected_delivery }
+    UI -> U : Hiển thị xác nhận đơn hàng
+  end
+end
+
+@enduml

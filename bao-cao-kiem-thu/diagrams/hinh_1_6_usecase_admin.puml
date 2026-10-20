@@ -1,0 +1,66 @@
+@startuml
+' Hinh 1.6 - Use Case chi tiet cho tac nhan Quan tri vien (Admin)
+!theme plain
+skinparam dpi 200
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 13
+skinparam shadowing false
+skinparam packageStyle rectangle
+left to right direction
+
+actor "Quản trị viên" as ADM
+actor "Quản lý" as MAN
+
+rectangle "Phân hệ Quản trị" {
+  usecase "Đăng nhập Dashboard" as A1
+  usecase "Xem tổng quan hệ thống" as A1a
+
+  usecase "Xem danh sách người dùng" as A2
+  usecase "Tạo tài khoản trực tiếp" as A2a
+  usecase "Phân quyền người dùng" as A2b
+  usecase "Khóa - mở khóa tài khoản" as A2c
+  usecase "Đặt lại mật khẩu" as A2d
+  usecase "Xóa mềm - khôi phục tài khoản" as A2e
+
+  usecase "Duyệt tài khoản chờ" as A3
+  usecase "Từ chối tài khoản" as A3a
+
+  usecase "Duyệt sản phẩm chờ" as A4
+  usecase "Từ chối sản phẩm (kèm lý do)" as A4a
+  usecase "Xem lịch sử duyệt" as A4b
+
+  usecase "Xem thống kê doanh thu" as A5
+  usecase "Xem sản phẩm bán chạy" as A5a
+  usecase "Xem doanh thu theo danh mục" as A5b
+  usecase "Xem tăng trưởng khách hàng" as A5c
+  usecase "Xem đơn chưa hoàn tất" as A5d
+
+  usecase "Xem nhật ký hệ thống" as A6
+  usecase "Giám sát hội thoại hỗ trợ" as A7
+}
+
+ADM --> A1
+ADM --> A2
+ADM --> A3
+ADM --> A4
+ADM --> A5
+ADM --> A6
+ADM --> A7
+
+A1 ..> A1a : <<include>>
+A2 ..> A2a : <<extend>>
+A2 ..> A2b : <<extend>>
+A2 ..> A2c : <<extend>>
+A2 ..> A2d : <<extend>>
+A2 ..> A2e : <<extend>>
+A3 ..> A3a : <<extend>>
+A4 ..> A4a : <<extend>>
+A4 ..> A4b : <<include>>
+A5 ..> A5a : <<include>>
+A5 ..> A5b : <<include>>
+A5 ..> A5c : <<include>>
+A5 ..> A5d : <<include>>
+
+MAN --> A4 : gửi yêu cầu duyệt
+
+@enduml

@@ -1,0 +1,56 @@
+@startuml
+' Hinh 1.14 - So do hoat dong: Dang ky va duyet ca lam viec
+!theme plain
+skinparam dpi 200
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+skinparam shadowing false
+
+|#F4F6F7|Nhân viên (Staff)|
+start
+:Mở màn hình Ca làm việc;
+:Chọn ngày, giờ bắt đầu, giờ kết thúc;
+:Gửi đăng ký ca;
+
+|#E8F8F5|Hệ thống|
+:Kiểm tra dữ liệu ca làm;
+if (Thiếu hoặc sai định dạng?) then (có)
+  :Trả về lỗi 400;
+  stop
+else (không)
+endif
+:Lưu shift_registrations\nvới status = 'pending';
+
+|#EBF5FB|Quản lý (Manager)|
+:Xem danh sách ca chờ duyệt;
+if (Chấp thuận ca?) then (duyệt)
+  :Nhấn "Duyệt";
+  |#E8F8F5|Hệ thống|
+  :Cập nhật status = 'approved';
+  :Ghi nhận manager_id xử lý;
+else (từ chối)
+  |#EBF5FB|Quản lý (Manager)|
+  :Nhập ghi chú lý do;
+  |#E8F8F5|Hệ thống|
+  :Cập nhật status = 'rejected';
+endif
+:Gửi thông báo cho nhân viên;
+
+|#F4F6F7|Nhân viên (Staff)|
+:Nhận kết quả duyệt ca;
+if (Ca được duyệt?) then (có)
+  :Đến ca làm và thực hiện check-in;
+  |#E8F8F5|Hệ thống|
+  :Tạo phiên attendance_sessions\nvới wage_rate tương ứng;
+  |#F4F6F7|Nhân viên (Staff)|
+  :Thực hiện check-out khi hết ca;
+  |#E8F8F5|Hệ thống|
+  :Tính worked_seconds và cộng vào bảng lương;
+else (không)
+  |#F4F6F7|Nhân viên (Staff)|
+  :Đăng ký lại ca khác;
+  detach
+endif
+stop
+
+@enduml

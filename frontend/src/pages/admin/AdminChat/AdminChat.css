@@ -1,0 +1,254 @@
+/* Nền xám nhạt đồng bộ Dashboard */
+.admin-chat-dashboard {
+  padding: 30px;
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.page-header h1 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+/* Thống kê đơn hàng giống Dashboard */
+.stat-card {
+  background: white;
+  padding: 12px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.stat-card span {
+  display: block;
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 700;
+}
+.stat-card strong {
+  font-size: 22px;
+  color: #2563eb;
+}
+
+/* Grid chia 3 ô (Cột trái: 300px, Cột giữa: tự động, Cột phải: 280px) */
+.admin-chat-grid-container {
+  display: grid;
+  grid-template-columns: 320px 1fr 300px;
+  gap: 20px;
+  height: calc(100vh - 180px);
+}
+
+/* Kiểu dáng chung cho các ô (Glass Card) */
+.glass-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Ô bên trái - Danh sách */
+.chat-sidebar-box .box-header {
+  padding: 20px;
+  border-bottom: 1px solid #f8fafc;
+}
+
+.chat-sidebar-box h3 {
+  font-size: 16px;
+  color: #334155;
+  border-left: 4px solid #2563eb;
+  padding-left: 12px;
+}
+
+.sidebar-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Ô ở giữa - Nội dung Chat */
+.chat-main-box {
+  background-color: #ffffff;
+}
+
+.chat-empty-state {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+}
+
+.empty-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+/* Ô bên phải - Thông tin */
+.chat-info-box {
+  background-color: #fcfcfc;
+  padding: 25px;
+}
+
+.user-profile-summary {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.avatar-circle {
+  width: 80px;
+  height: 80px;
+  background: #2563eb;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 auto 15px;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+}
+
+.user-tag {
+  background: #eff6ff;
+  color: #2563eb;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.info-item label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.info-item textarea {
+  width: 100%;
+  height: 120px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+  font-size: 13px;
+  resize: none;
+  background: white;
+}
+
+.info-footer-actions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-order-history {
+  background: #f1f5f9;
+  color: #334155;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-finish {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Mobile responsive */
+@media (max-width: 1200px) {
+  .admin-chat-grid-container {
+    grid-template-columns: 280px 1fr;
+  }
+  .chat-info-box {
+    display: none;
+  }
+}
+.user-list-container {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chat-user-box {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px; /* Bo góc đồng bộ Dashboard */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.chat-user-box:hover {
+  background: #f8fafc;
+  border-color: #2563eb;
+  transform: translateX(4px);
+}
+
+.chat-user-box.active {
+  background: #eff6ff;
+  border-color: #2563eb;
+}
+
+.user-avatar {
+  width: 35px;
+  height: 35px;
+  background: #2563eb;
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 12px;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-email-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.user-subtext {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.active-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #2563eb;
+}
