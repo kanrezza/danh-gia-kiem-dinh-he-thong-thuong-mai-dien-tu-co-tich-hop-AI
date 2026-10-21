@@ -18,7 +18,7 @@ Kho mã và hồ sơ bài tập lớn học phần **Đánh giá và Kiểm đ�
 
 | STT | Họ và tên | Mã sinh viên | Phần việc chính | Đóng góp |
 |---|---|---|---|---|
-| 1 | Trần Đình Danh (nhóm trưởng) | 23010211 | Lập kế hoạch và điều phối; kế hoạch SQA và kế hoạch kiểm thử (Chương II); test case; kiểm thử tự động; tổng hợp khiếm khuyết, đánh giá ISO/IEC 25010 và kết luận (Chương VII) | 34% |
+| 1 | Trần Đình Danh  | 23010211 | Lập kế hoạch và điều phối; kế hoạch SQA và kế hoạch kiểm thử (Chương II); test case; kiểm thử tự động; tổng hợp khiếm khuyết, đánh giá ISO/IEC 25010 và kết luận (Chương VII) | 34% |
 | 2 | Lê Đình Đức Anh | 23010219 | Đặc tả yêu cầu (Chương I); sơ đồ UML; dựng môi trường kiểm thử; kiểm thử tự động (Chương IV); kiểm thử bảo mật | 33% |
 | 3 | Lê Quang Thắng | 23010236 | Sơ đồ UML; thiết kế và thực hiện test case (Chương III); kiểm thử hiệu năng (Chương V); kiểm thử bảo mật (Chương VI); phụ lục | 33% |
 
