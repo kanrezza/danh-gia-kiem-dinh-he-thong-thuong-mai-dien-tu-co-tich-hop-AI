@@ -1,27 +1,5 @@
 # Đánh giá và kiểm định chất lượng hệ thống Tiger Shop
 
-Kho mã và hồ sơ bài tập lớn học phần **Đánh giá và Kiểm định chất lượng phần mềm** của Nhóm 5. Đối tượng kiểm định là Tiger Shop, một hệ thống thương mại điện tử bán quần áo có trợ lý ảo tư vấn dùng Google Gemini, kênh chat hỗ trợ thời gian thực và phân hệ quản lý nhân sự.
-
-## Thông tin chung
-
-| Mục | Nội dung |
-|---|---|
-| Học phần | Đánh giá và Kiểm định chất lượng phần mềm |
-| Lớp học phần | CSE703010-1-1-26 |
-| Giảng viên hướng dẫn | TS. Trịnh Thanh Bình |
-| Đề tài | Đánh giá và kiểm định chất lượng hệ thống thương mại điện tử có tích hợp AI Chatbot tư vấn |
-| Nhóm | Nhóm 5 |
-| Thời gian thực thi kiểm thử | 24/09/2026 đến 26/09/2026 |
-| Báo cáo chính thức | `bao-cao/đánh giá kiểm định (đầy đủ).docx` |
-
-## Thành viên và phân công
-
-| STT | Họ và tên | Mã sinh viên | Phần việc chính | Đóng góp |
-|---|---|---|---|---|
-| 1 | Trần Đình Danh  | 23010211 | Lập kế hoạch và điều phối; kế hoạch SQA và kế hoạch kiểm thử (Chương II); test case; kiểm thử tự động; tổng hợp khiếm khuyết, đánh giá ISO/IEC 25010 và kết luận (Chương VII) | 34% |
-| 2 | Lê Đình Đức Anh | 23010219 | Đặc tả yêu cầu (Chương I); sơ đồ UML; dựng môi trường kiểm thử; kiểm thử tự động (Chương IV); kiểm thử bảo mật | 33% |
-| 3 | Lê Quang Thắng | 23010236 | Sơ đồ UML; thiết kế và thực hiện test case (Chương III); kiểm thử hiệu năng (Chương V); kiểm thử bảo mật (Chương VI); phụ lục | 33% |
-
 ## Giới thiệu
 
 Nhóm không xây dựng Tiger Shop mà đóng vai trò một đội đảm bảo chất lượng độc lập. Hoạt động kiểm định đi qua bảy bước, tương ứng bảy chương của báo cáo: đặc tả lại yêu cầu để có thước đo đúng sai, lập kế hoạch kiểm thử, thiết kế và thực hiện test case, xây dựng bộ kiểm thử tự động, kiểm thử hiệu năng, kiểm thử bảo mật, rồi tổng hợp khiếm khuyết và đánh giá chất lượng.
