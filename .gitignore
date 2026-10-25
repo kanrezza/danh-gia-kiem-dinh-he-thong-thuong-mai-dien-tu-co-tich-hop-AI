@@ -21,3 +21,5 @@ Thumbs.db
 .continue/
 .claude/
 .sixth/
+__pycache__/
+*.pyc
