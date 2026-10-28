@@ -1,9 +1,10 @@
 <div align="center">
 
 ### Đánh giá và kiểm định chất lượng hệ thống thương mại điện tử có tích hợp AI Chatbot tư vấn
-
-Đồ án môn **Đánh giá và Kiểm định chất lượng phần mềm** · Lớp học phần CSE703010-1-1-26<br>
-Trường Công nghệ Thông tin, Đại học Phenikaa · GVHD: TS. Trịnh Thanh Bình
+Trường Công nghệ Thông tin, Đại học Phenikaa
+Đồ án môn **Đánh giá và Kiểm định chất lượng phần mềm** · 
+Lớp học phần CSE703010-1-1-26<br>
+GVHD: TS. Trịnh Thanh Bình
 
 </div>
 
