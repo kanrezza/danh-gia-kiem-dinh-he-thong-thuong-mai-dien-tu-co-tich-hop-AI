@@ -41,7 +41,7 @@ Kế hoạch kiểm thử dựa trên IEEE 829, IEEE 730 và ISO/IEC/IEEE 29119-
 
 ## Cấu trúc kho
 
-Kho gồm mã nguồn hệ thống, minh chứng kiểm thử, bộ công cụ chạy demo, báo cáo và slide thuyết trình. Video thuyết trình có dung lượng lớn nên được đính kèm riêng ở mục Releases của kho.
+Kho gồm mã nguồn hệ thống, minh chứng kiểm thử, bộ công cụ chạy demo, báo cáo, slide và video thuyết trình. Video có dung lượng lớn nên được lưu bằng Git LFS; khi clone kho cần cài Git LFS (git lfs install) để tải về tệp video thật.
 
 | Đường dẫn | Nội dung |
 |---|---|
@@ -55,6 +55,7 @@ Kho gồm mã nguồn hệ thống, minh chứng kiểm thử, bộ công cụ c
 | `database/migrations/` | Các tệp migration gốc của nhóm phát triển |
 | `Báo cáo_Nhóm 5_Đánh giá kiểm định chất lượng phần mềm.docx` | Báo cáo chính thức (7 chương, phụ lục A đến H, 203 bảng, 75 hình, 27 tài liệu tham khảo) |
 | `Slide_Nhóm5_Đánh giá kiểm định chất lượng phần mềm.pptx` | Slide thuyết trình |
+| `Thuyết Trình_Nhóm 5_Đánh giá kiểm định chất lượng phần mềm.mov` | Video thuyết trình (lưu bằng Git LFS) |
 | `Demo_Nhóm 5_Đánh giá kiểm thử chất lượng phần mềm/demo/` | Bộ công cụ chạy demo trực tiếp khi thuyết trình (tệp .command cho macOS), cách dùng ở README trong thư mục |
 | `bao-cao-kiem-thu/` | Minh chứng kiểm thử và hướng dẫn môi trường (xem mục bên dưới) |
 
@@ -264,6 +265,7 @@ Nhóm là đội kiểm thử độc lập nên **không sửa khiếm khuyết 
 |---|---|
 | Báo cáo chính thức | `Báo cáo_Nhóm 5_Đánh giá kiểm định chất lượng phần mềm.docx` |
 | Slide thuyết trình | `Slide_Nhóm5_Đánh giá kiểm định chất lượng phần mềm.pptx` |
+| Video thuyết trình | `Thuyết Trình_Nhóm 5_Đánh giá kiểm định chất lượng phần mềm.mov` (Git LFS) |
 | Hồ sơ kiểm thử chi tiết | `bao-cao-kiem-thu/README.md` |
 | Hướng dẫn dựng môi trường | `bao-cao-kiem-thu/HUONG_DAN_MOI_TRUONG.md` |
 | Bảng test case | `bao-cao-kiem-thu/Tiger_Shop_TestCases.xlsx` |
