@@ -1,0 +1,11 @@
+const fs=require('fs');const path=require('path');
+const p=process.argv[2];const j=JSON.parse(fs.readFileSync(p,'utf8'));
+const executed=j.numPassedTests+j.numFailedTests;
+const end=Math.max(...j.testResults.map(x=>x.endTime||j.startTime));
+console.log('\nKET QUA CUA LAN CHAY VUA THUC HIEN');
+console.table([{da_chay:executed,passed:j.numPassedTests,failed:j.numFailedTests,bo_qua_do_loc:j.numPendingTests,tong_trong_cac_file:j.numTotalTests,so_suite:j.numTotalTestSuites}]);
+console.log('Bat dau:',new Date(j.startTime).toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh'}));
+console.log('Thoi gian:',((end-j.startTime)/1000).toFixed(2),'giay');
+for(const file of j.testResults)for(const t of file.assertionResults)if(t.status!=='pending')console.log(t.status.toUpperCase(),t.fullName);
+console.log('JSON minh chung:',p);
+console.log('Luu y: PASS cua script phai doi chieu ky vong nghiep vu.');

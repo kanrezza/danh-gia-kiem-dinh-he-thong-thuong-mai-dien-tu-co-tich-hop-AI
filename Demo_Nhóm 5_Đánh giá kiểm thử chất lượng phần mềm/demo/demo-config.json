@@ -1,0 +1,9 @@
+{
+  "runtime": "/Users/trandanh/.codex/visualizations/2026/10/25/01a173e3-44aa-7910-b725-21414828936b/bao-cao-review/video-demo/runtime",
+  "node": "/usr/local/bin/node",
+  "python": "/Users/trandanh/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+  "ui": "http://127.0.0.1:3001",
+  "api": "http://127.0.0.1:5101",
+  "uiDatabase": "tigershop_video_demo",
+  "testDatabase": "tigershop_video_test"
+}

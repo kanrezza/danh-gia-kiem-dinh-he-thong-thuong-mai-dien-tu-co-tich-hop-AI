@@ -1,0 +1,26 @@
+{
+  "scope": "Only the isolated demo copy. Original project uploads and databases are unchanged.",
+  "purpose": "Resolve the 15 image filenames referenced by the provided test seed. Names/prices/stock/rules unchanged.",
+  "sources": [
+    "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
+    "https://images.unsplash.com/photo-1485968579580-b6d095142e6e"
+  ],
+  "source_context": "Both URLs already appear in frontend/src/pages/customer/Home.js",
+  "files": [
+    "sample-1.jpg",
+    "sample-2.jpg",
+    "sample-3.jpg",
+    "sample-4.jpg",
+    "sample-5.jpg",
+    "sample-6.jpg",
+    "sample-7.jpg",
+    "sample-8.jpg",
+    "sample-9.jpg",
+    "sample-10.jpg",
+    "sample-11.jpg",
+    "sample-12.jpg",
+    "sample-13.jpg",
+    "sample-14.jpg",
+    "sample-15.jpg"
+  ]
+}

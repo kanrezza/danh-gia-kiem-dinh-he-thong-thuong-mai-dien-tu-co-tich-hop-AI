@@ -1,5 +1,27 @@
 # Đánh giá và kiểm định chất lượng hệ thống thương mại điện tử
 
+Kho mã và hồ sơ bài tập lớn học phần **Đánh giá và Kiểm định chất lượng phần mềm** của Nhóm 5. Đối tượng kiểm định là Tiger Shop, một hệ thống thương mại điện tử bán quần áo có trợ lý ảo tư vấn dùng Google Gemini, kênh chat hỗ trợ thời gian thực và phân hệ quản lý nhân sự.
+
+## Thông tin chung
+
+| Mục | Nội dung |
+|---|---|
+| Học phần | Đánh giá và Kiểm định chất lượng phần mềm |
+| Lớp học phần | CSE703010-1-1-26 |
+| Giảng viên hướng dẫn | TS. Trịnh Thanh Bình |
+| Đề tài | Đánh giá và kiểm định chất lượng hệ thống thương mại điện tử có tích hợp AI Chatbot tư vấn |
+| Nhóm | Nhóm 5 |
+| Thời gian thực thi kiểm thử | 24/09/2026 đến 26/09/2026 |
+| Báo cáo chính thức | Nộp riêng cho giảng viên, không đưa lên kho |
+
+## Thành viên và phân công
+
+| STT | Họ và tên | Mã sinh viên | Phần việc chính | Đóng góp |
+|---|---|---|---|---|
+| 1 | Trần Đình Danh (nhóm trưởng) | 23010211 | Lập kế hoạch và điều phối; kế hoạch SQA và kế hoạch kiểm thử (Chương II); test case; kiểm thử tự động; tổng hợp khiếm khuyết, đánh giá ISO/IEC 25010 và kết luận (Chương VII) | 34% |
+| 2 | Lê Đình Đức Anh | 23010219 | Đặc tả yêu cầu (Chương I); sơ đồ UML; dựng môi trường kiểm thử; kiểm thử tự động (Chương IV); kiểm thử bảo mật | 33% |
+| 3 | Lê Quang Thắng | 23010236 | Sơ đồ UML; thiết kế và thực hiện test case (Chương III); kiểm thử hiệu năng (Chương V); kiểm thử bảo mật (Chương VI); phụ lục | 33% |
+
 ## Giới thiệu
 
 Nhóm không xây dựng Tiger Shop mà đóng vai trò một đội đảm bảo chất lượng độc lập. Hoạt động kiểm định đi qua bảy bước, tương ứng bảy chương của báo cáo: đặc tả lại yêu cầu để có thước đo đúng sai, lập kế hoạch kiểm thử, thiết kế và thực hiện test case, xây dựng bộ kiểm thử tự động, kiểm thử hiệu năng, kiểm thử bảo mật, rồi tổng hợp khiếm khuyết và đánh giá chất lượng.
@@ -39,7 +61,7 @@ Kế hoạch kiểm thử dựa trên IEEE 829, IEEE 730 và ISO/IEC/IEEE 29119-
 
 ## Cấu trúc kho
 
-Kho chỉ gồm ba phần: mã nguồn hệ thống, minh chứng kiểm thử và báo cáo.
+Kho gồm mã nguồn hệ thống, minh chứng kiểm thử và bộ công cụ chạy demo. Báo cáo, slide và video thuyết trình nộp riêng cho giảng viên, không đưa lên kho.
 
 | Đường dẫn | Nội dung |
 |---|---|
@@ -51,7 +73,7 @@ Kho chỉ gồm ba phần: mã nguồn hệ thống, minh chứng kiểm thử v
 | `frontend/` | Mã nguồn giao diện React, kèm `frontend/.env.example` |
 | `database/schema_full.sql` | Lược đồ đủ 23 bảng do nhóm dựng lại (FIX-01, FIX-02) |
 | `database/migrations/` | Các tệp migration gốc của nhóm phát triển |
-| `bao-cao/` | Báo cáo chính thức (7 chương, phụ lục A đến H, 203 bảng, 75 hình, 27 tài liệu tham khảo) |
+| `Demo_Nhóm 5_Đánh giá kiểm thử chất lượng phần mềm/demo/` | Bộ công cụ chạy demo trực tiếp khi thuyết trình (tệp .command cho macOS), cách dùng ở README trong thư mục |
 | `bao-cao-kiem-thu/` | Minh chứng kiểm thử và hướng dẫn môi trường (xem mục bên dưới) |
 
 ## Minh chứng kiểm thử
@@ -258,7 +280,7 @@ Nhóm là đội kiểm thử độc lập nên **không sửa khiếm khuyết 
 
 | Tài liệu | Vị trí |
 |---|---|
-| Báo cáo chính thức | `bao-cao/đánh giá kiểm định (đầy đủ).docx` |
+| Báo cáo chính thức | Nộp riêng, không có trong kho |
 | Hồ sơ kiểm thử chi tiết | `bao-cao-kiem-thu/README.md` |
 | Hướng dẫn dựng môi trường | `bao-cao-kiem-thu/HUONG_DAN_MOI_TRUONG.md` |
 | Bảng test case | `bao-cao-kiem-thu/Tiger_Shop_TestCases.xlsx` |

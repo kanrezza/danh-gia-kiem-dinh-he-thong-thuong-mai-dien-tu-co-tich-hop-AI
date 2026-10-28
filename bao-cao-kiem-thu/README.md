@@ -6,7 +6,7 @@ Thư mục này đi kèm báo cáo đồ án học phần **Đánh giá và Ki�
 
 **Nhóm thực hiện:** Trần Đình Danh (nhóm trưởng), Lê Đình Đức Anh, Lê Quang Thắng.
 
-Báo cáo chính thức là tệp Word `đánh giá kiểm định (đầy đủ).docx` trong thư mục `bao-cao` ở gốc kho. Số liệu trong tệp này lấy từ bản Word đó và từ các tệp kết quả trong thư mục; nếu có khác biệt, bản Word là bản chuẩn.
+Báo cáo chính thức là tệp Word nộp riêng cho giảng viên, không đưa lên kho. Số liệu trong tệp này lấy từ bản Word đó và từ các tệp kết quả trong thư mục; nếu có khác biệt, bản Word là bản chuẩn.
 
 ## Nội dung báo cáo
 
