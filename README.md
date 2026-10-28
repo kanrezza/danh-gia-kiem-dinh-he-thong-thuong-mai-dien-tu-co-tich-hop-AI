@@ -1,12 +1,62 @@
-# Đánh giá và kiểm định chất lượng hệ thống thương mại điện tử
+# Đánh giá và kiểm định chất lượng hệ thống thương mại điện tử có tích hợp AI Chatbot tư vấn
 
-Kho mã và hồ sơ bài tập lớn học phần **Đánh giá và Kiểm định chất lượng phần mềm** của Nhóm 5. Đối tượng kiểm định là Tiger Shop, một hệ thống thương mại điện tử bán quần áo có trợ lý ảo tư vấn dùng Google Gemini, kênh chat hỗ trợ thời gian thực và phân hệ quản lý nhân sự.
+Đồ án học phần **Đánh giá và Kiểm định chất lượng phần mềm** của **Nhóm 5**, Trường Công nghệ Thông tin, Đại học Phenikaa. Kho này chứa toàn bộ hồ sơ của đồ án: báo cáo, slide, video thuyết trình, mã nguồn hệ thống được kiểm định, bộ kiểm thử tự động và minh chứng của từng hoạt động kiểm thử.
 
-## Giới thiệu
+## Thông tin đề tài
+
+| Mục | Nội dung |
+|---|---|
+| Trường | Trường Công nghệ Thông tin, Đại học Phenikaa |
+| Học phần | Đánh giá và Kiểm định chất lượng phần mềm |
+| Lớp học phần | CSE703010-1-1-26 |
+| Giảng viên hướng dẫn | TS. Trịnh Thanh Bình |
+| Tên đề tài | Đánh giá và kiểm định chất lượng hệ thống thương mại điện tử có tích hợp AI Chatbot tư vấn |
+| Nhóm thực hiện | Nhóm 5 (3 thành viên) |
+| Đối tượng kiểm định | Tiger Shop, hệ thống thương mại điện tử bán quần áo có trợ lý ảo Tiger AI dùng Google Gemini, kênh chat hỗ trợ thời gian thực và phân hệ quản lý nhân sự |
+| Thời gian thực thi kiểm thử | 24/09/2026 đến 26/09/2026 |
+| Hoàn thành | Hà Nội, tháng 10 năm 2026 |
+
+## Thành viên nhóm
+
+| STT | Họ và tên | Mã sinh viên | Phần việc chính | Tỉ lệ đóng góp |
+|---|---|---|---|---|
+| 1 | Trần Đình Danh (nhóm trưởng) | 23010211 | Lập kế hoạch và điều phối nhóm; kế hoạch đảm bảo chất lượng và kế hoạch kiểm thử (Chương II); cùng thiết kế test case và viết kiểm thử tự động; tổng hợp khiếm khuyết, đánh giá theo ISO/IEC 25010 và kết luận (Chương VII) | 34% |
+| 2 | Lê Đình Đức Anh | 23010219 | Đặc tả yêu cầu (Chương I); vẽ sơ đồ UML; dựng môi trường kiểm thử; kiểm thử tự động (Chương IV); kiểm thử bảo mật | 33% |
+| 3 | Lê Quang Thắng | 23010236 | Vẽ sơ đồ UML; thiết kế và thực hiện test case (Chương III); kiểm thử hiệu năng (Chương V); kiểm thử bảo mật (Chương VI); tổng hợp minh chứng | 33% |
+
+### Phân công công việc
+
+| Công việc | Nội dung | Người thực hiện |
+|---|---|---|
+| 1 | Lập kế hoạch thực hiện đồ án, chia việc, theo dõi tiến độ và trao đổi với giảng viên hướng dẫn | Trần Đình Danh |
+| 2 | Đặc tả yêu cầu phần mềm: 25 Use Case, yêu cầu phi chức năng, đối chiếu với mã nguồn (Chương I) | Lê Đình Đức Anh |
+| 3 | Vẽ sơ đồ Use Case, tuần tự, hoạt động, lớp, ERD, kiến trúc và triển khai (Chương I, Chương II) | Lê Đình Đức Anh, Lê Quang Thắng |
+| 4 | Lập kế hoạch đảm bảo chất lượng và kế hoạch kiểm thử theo IEEE 829 và IEEE 730 (Chương II) | Trần Đình Danh |
+| 5 | Dựng môi trường kiểm thử: MySQL 8.0.46 trong Docker, lược đồ 23 bảng, dữ liệu mẫu và tài khoản kiểm thử | Lê Đình Đức Anh |
+| 6 | Thiết kế và thực hiện 135 test case, lập ma trận truy vết và tệp Excel quản lý test case (Chương III) | Lê Quang Thắng, Trần Đình Danh |
+| 7 | Viết 222 kịch bản kiểm thử tự động bằng Jest và Supertest, đo độ bao phủ mã nguồn (Chương IV) | Lê Đình Đức Anh, Trần Đình Danh |
+| 8 | Kiểm thử hiệu năng bằng Apache JMeter ở ba mức tải, phân tích lỗi phát sinh và khóa chết (Chương V) | Lê Quang Thắng |
+| 9 | Kiểm thử bảo mật bằng OWASP ZAP và 47 phép kiểm chứng theo kịch bản (Chương VI) | Lê Quang Thắng, Lê Đình Đức Anh |
+| 10 | Tổng hợp 36 khiếm khuyết, đánh giá chất lượng theo ISO/IEC 25010 và viết kết luận (Chương VII) | Trần Đình Danh |
+| 11 | Chụp ảnh giao diện, chuẩn hóa hình và tổng hợp minh chứng trong kho mã nguồn | Lê Quang Thắng |
+| 12 | Viết và hoàn thiện báo cáo, tổng hợp tài liệu tham khảo, chuẩn bị slide và video thuyết trình | Cả nhóm |
+
+## Sản phẩm nộp
+
+| Sản phẩm | Tệp trong kho | Ghi chú |
+|---|---|---|
+| Báo cáo đồ án | [Báo cáo_Nhóm 5_Đánh giá kiểm định chất lượng phần mềm.docx](<Báo cáo_Nhóm 5_Đánh giá kiểm định chất lượng phần mềm.docx>) | 7 chương, phụ lục A đến H; bấm vào tệp rồi chọn tải về để mở bằng Word |
+| Slide thuyết trình | [Slide_Nhóm5_Đánh giá kiểm định chất lượng phần mềm.pptx](<Slide_Nhóm5_Đánh giá kiểm định chất lượng phần mềm.pptx>) | Mở bằng PowerPoint |
+| Video thuyết trình | [Video_thuyet_trinh_Nhom5.mp4](Video_thuyet_trinh_Nhom5.mp4) | MP4 khoảng 44 MB, dài khoảng 31 phút; GitHub không phát video trực tiếp nên cần tải về để xem |
+| Bảng test case | [bao-cao-kiem-thu/Tiger_Shop_TestCases.xlsx](bao-cao-kiem-thu/Tiger_Shop_TestCases.xlsx) | 135 test case kèm kết quả thực hiện |
+| Minh chứng kiểm thử | [bao-cao-kiem-thu/](bao-cao-kiem-thu/) | Kết quả Jest, độ bao phủ, hiệu năng, bảo mật (xem mục Minh chứng kiểm thử) |
+| Bộ công cụ demo | [Demo_Nhóm 5_Đánh giá kiểm thử chất lượng phần mềm/demo/](<Demo_Nhóm 5_Đánh giá kiểm thử chất lượng phần mềm/demo/>) | Các tệp .command dùng để chạy demo trực tiếp khi thuyết trình |
+
+## Giới thiệu đề tài
 
 Nhóm không xây dựng Tiger Shop mà đóng vai trò một đội đảm bảo chất lượng độc lập. Hoạt động kiểm định đi qua bảy bước, tương ứng bảy chương của báo cáo: đặc tả lại yêu cầu để có thước đo đúng sai, lập kế hoạch kiểm thử, thiết kế và thực hiện test case, xây dựng bộ kiểm thử tự động, kiểm thử hiệu năng, kiểm thử bảo mật, rồi tổng hợp khiếm khuyết và đánh giá chất lượng.
 
-**Kết luận:** Tiger Shop có nền tảng nghiệp vụ và độ tin cậy tốt. Giao dịch đặt hàng hoàn tác đúng khi lỗi, chống tranh chấp tồn kho đúng, chống chèn mã SQL tuyệt đối và đáp ứng vượt yêu cầu ở mức 100 người dùng đồng thời. Tuy vậy hệ thống **chưa đủ điều kiện nghiệm thu** vì còn 4 lỗ hổng bảo mật mức Nghiêm trọng về kiểm soát truy cập, chỉ 3 trên 10 tiêu chí kết thúc kiểm thử đạt và đặc tính Bảo mật chỉ được 1 trên 5 điểm.
+**Kết luận:** Tiger Shop có nền tảng nghiệp vụ và độ tin cậy tốt. Giao dịch đặt hàng hoàn tác đúng khi lỗi, chống tranh chấp tồn kho đúng, chưa phát hiện lỗ hổng chèn mã SQL và đáp ứng vượt yêu cầu ở mức 100 người dùng đồng thời. Tuy vậy hệ thống **chưa đủ điều kiện nghiệm thu** vì còn 4 lỗ hổng bảo mật mức Nghiêm trọng về kiểm soát truy cập, chỉ 3 trên 10 tiêu chí kết thúc kiểm thử đạt và đặc tính Bảo mật chỉ được 1 trên 5 điểm.
 
 ## Hệ thống được kiểm thử
 
@@ -41,7 +91,7 @@ Kế hoạch kiểm thử dựa trên IEEE 829, IEEE 730 và ISO/IEC/IEEE 29119-
 
 ## Cấu trúc kho
 
-Kho gồm mã nguồn hệ thống, minh chứng kiểm thử, bộ công cụ chạy demo, báo cáo, slide và video thuyết trình. Video có dung lượng lớn nên được lưu bằng Git LFS; khi clone kho cần cài Git LFS (git lfs install) để tải về tệp video thật.
+Kho gồm mã nguồn hệ thống, minh chứng kiểm thử, bộ công cụ chạy demo, báo cáo, slide và video thuyết trình.
 
 | Đường dẫn | Nội dung |
 |---|---|
@@ -55,7 +105,7 @@ Kho gồm mã nguồn hệ thống, minh chứng kiểm thử, bộ công cụ c
 | `database/migrations/` | Các tệp migration gốc của nhóm phát triển |
 | `Báo cáo_Nhóm 5_Đánh giá kiểm định chất lượng phần mềm.docx` | Báo cáo chính thức (7 chương, phụ lục A đến H, 203 bảng, 75 hình, 27 tài liệu tham khảo) |
 | `Slide_Nhóm5_Đánh giá kiểm định chất lượng phần mềm.pptx` | Slide thuyết trình |
-| `Thuyết Trình_Nhóm 5_Đánh giá kiểm định chất lượng phần mềm.mov` | Video thuyết trình (lưu bằng Git LFS) |
+| `Video_thuyet_trinh_Nhom5.mp4` | Video thuyết trình |
 | `Demo_Nhóm 5_Đánh giá kiểm thử chất lượng phần mềm/demo/` | Bộ công cụ chạy demo trực tiếp khi thuyết trình (tệp .command cho macOS), cách dùng ở README trong thư mục |
 | `bao-cao-kiem-thu/` | Minh chứng kiểm thử và hướng dẫn môi trường (xem mục bên dưới) |
 
@@ -265,7 +315,7 @@ Nhóm là đội kiểm thử độc lập nên **không sửa khiếm khuyết 
 |---|---|
 | Báo cáo chính thức | `Báo cáo_Nhóm 5_Đánh giá kiểm định chất lượng phần mềm.docx` |
 | Slide thuyết trình | `Slide_Nhóm5_Đánh giá kiểm định chất lượng phần mềm.pptx` |
-| Video thuyết trình | `Thuyết Trình_Nhóm 5_Đánh giá kiểm định chất lượng phần mềm.mov` (Git LFS) |
+| Video thuyết trình | `Video_thuyet_trinh_Nhom5.mp4` |
 | Hồ sơ kiểm thử chi tiết | `bao-cao-kiem-thu/README.md` |
 | Hướng dẫn dựng môi trường | `bao-cao-kiem-thu/HUONG_DAN_MOI_TRUONG.md` |
 | Bảng test case | `bao-cao-kiem-thu/Tiger_Shop_TestCases.xlsx` |
