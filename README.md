@@ -26,10 +26,9 @@ Hà Nội, 10/2026
 
 ---
 
-> 🎬 **Video thuyết trình (khoảng 31 phút): [Xem trực tiếp trên Google Drive](https://drive.google.com/drive/folders/1xpdqgYqou74RNUnsy4YJHszWI9veDvTd?usp=sharing)**
+ **Video thuyết trình (https://drive.google.com/drive/folders/1xpdqgYqou74RNUnsy4YJHszWI9veDvTd?usp=sharing)**
 >
-> Bản MP4 cũng có sẵn trong kho: [Video_thuyet_trinh_Nhom5.mp4](Video_thuyet_trinh_Nhom5.mp4) (GitHub không phát video trực tiếp nên cần tải về để xem).
-
+> Bản MP4 cũng có sẵn trong kho: [Video_thuyet_trinh_Nhom5.mp4](Video_thuyet_trinh_Nhom5.mp4) 
 ## Phân công nhiệm vụ
 
 ### Danh sách công việc
