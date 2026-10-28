@@ -41,7 +41,7 @@ Kế hoạch kiểm thử dựa trên IEEE 829, IEEE 730 và ISO/IEC/IEEE 29119-
 
 ## Cấu trúc kho
 
-Kho gồm mã nguồn hệ thống, minh chứng kiểm thử và bộ công cụ chạy demo. Báo cáo, slide và video thuyết trình nộp riêng cho giảng viên, không đưa lên kho.
+Kho gồm mã nguồn hệ thống, minh chứng kiểm thử, bộ công cụ chạy demo, báo cáo và slide thuyết trình. Video thuyết trình có dung lượng lớn nên được đính kèm riêng ở mục Releases của kho.
 
 | Đường dẫn | Nội dung |
 |---|---|
@@ -53,6 +53,8 @@ Kho gồm mã nguồn hệ thống, minh chứng kiểm thử và bộ công c�
 | `frontend/` | Mã nguồn giao diện React, kèm `frontend/.env.example` |
 | `database/schema_full.sql` | Lược đồ đủ 23 bảng do nhóm dựng lại (FIX-01, FIX-02) |
 | `database/migrations/` | Các tệp migration gốc của nhóm phát triển |
+| `Báo cáo_Nhóm 5_Đánh giá kiểm định chất lượng phần mềm.docx` | Báo cáo chính thức (7 chương, phụ lục A đến H, 203 bảng, 75 hình, 27 tài liệu tham khảo) |
+| `Slide_Nhóm5_Đánh giá kiểm định chất lượng phần mềm.pptx` | Slide thuyết trình |
 | `Demo_Nhóm 5_Đánh giá kiểm thử chất lượng phần mềm/demo/` | Bộ công cụ chạy demo trực tiếp khi thuyết trình (tệp .command cho macOS), cách dùng ở README trong thư mục |
 | `bao-cao-kiem-thu/` | Minh chứng kiểm thử và hướng dẫn môi trường (xem mục bên dưới) |
 
@@ -260,7 +262,8 @@ Nhóm là đội kiểm thử độc lập nên **không sửa khiếm khuyết 
 
 | Tài liệu | Vị trí |
 |---|---|
-| Báo cáo chính thức | Nộp riêng, không có trong kho |
+| Báo cáo chính thức | `Báo cáo_Nhóm 5_Đánh giá kiểm định chất lượng phần mềm.docx` |
+| Slide thuyết trình | `Slide_Nhóm5_Đánh giá kiểm định chất lượng phần mềm.pptx` |
 | Hồ sơ kiểm thử chi tiết | `bao-cao-kiem-thu/README.md` |
 | Hướng dẫn dựng môi trường | `bao-cao-kiem-thu/HUONG_DAN_MOI_TRUONG.md` |
 | Bảng test case | `bao-cao-kiem-thu/Tiger_Shop_TestCases.xlsx` |
