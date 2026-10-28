@@ -1,4 +1,4 @@
-# Đánh giá và kiểm định chất lượng hệ thống Tiger Shop
+# Đánh giá và kiểm định chất lượng hệ thống thương mại điện tử
 
 ## Giới thiệu
 
