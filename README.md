@@ -1,34 +1,23 @@
 <div align="center">
 
-**ĐẠI HỌC PHENIKAA**<br>
-**TRƯỜNG CÔNG NGHỆ THÔNG TIN ĐẠI HỌC PHENIKAA**
+### Đánh giá và kiểm định chất lượng hệ thống thương mại điện tử có tích hợp AI Chatbot tư vấn
 
-# BÁO CÁO ĐỒ ÁN
+Đồ án môn **Đánh giá và Kiểm định chất lượng phần mềm** · Lớp học phần CSE703010-1-1-26<br>
+Trường Công nghệ Thông tin, Đại học Phenikaa · GVHD: TS. Trịnh Thanh Bình
 
-### MÔN HỌC: ĐÁNH GIÁ VÀ KIỂM ĐỊNH CHẤT LƯỢNG PHẦN MỀM
+</div>
 
-**TÊN ĐỀ TÀI: ĐÁNH GIÁ VÀ KIỂM ĐỊNH CHẤT LƯỢNG HỆ THỐNG THƯƠNG MẠI ĐIỆN TỬ<br>CÓ TÍCH HỢP AI CHATBOT TƯ VẤN**
+**Nhóm 5 thực hiện**
 
-Lớp học phần: CSE703010-1-1-26<br>
-GVHD: TS. Trịnh Thanh Bình
-
-**Thành viên nhóm 5 thực hiện:**
-
-| Họ và Tên | Mã sinh viên | Email |
+| Họ và tên | Mã sinh viên | Email |
 |---|---|---|
 | Trần Đình Danh | 23010211 | 23010211@st.phenikaa-uni.edu.vn |
 | Lê Đình Đức Anh | 23010219 | 23010219@st.phenikaa-uni.edu.vn |
 | Lê Quang Thắng | 23010236 | 23010236@st.phenikaa-uni.edu.vn |
 
-Hà Nội, 10/2026
+**Video thuyết trình:** [Xem trên Google Drive](https://drive.google.com/drive/folders/1xpdqgYqou74RNUnsy4YJHszWI9veDvTd?usp=sharing)<br>
+Bản MP4 cũng có sẵn trong kho: [Video_thuyet_trinh_Nhom5.mp4](Video_thuyet_trinh_Nhom5.mp4)
 
-</div>
-
----
-
- **Video thuyết trình (https://drive.google.com/drive/folders/1xpdqgYqou74RNUnsy4YJHszWI9veDvTd?usp=sharing)**
->
-> Bản MP4 cũng có sẵn trong kho: [Video_thuyet_trinh_Nhom5.mp4](Video_thuyet_trinh_Nhom5.mp4) 
 ## Phân công nhiệm vụ
 
 ### Danh sách công việc
