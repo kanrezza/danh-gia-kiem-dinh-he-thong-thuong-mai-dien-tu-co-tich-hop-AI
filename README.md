@@ -1,45 +1,61 @@
-# Đánh giá và kiểm định chất lượng hệ thống thương mại điện tử có tích hợp AI Chatbot tư vấn
+<div align="center">
 
-Đồ án học phần **Đánh giá và Kiểm định chất lượng phần mềm** của **Nhóm 5**, Trường Công nghệ Thông tin, Đại học Phenikaa. Kho này chứa toàn bộ hồ sơ của đồ án: báo cáo, slide, video thuyết trình, mã nguồn hệ thống được kiểm định, bộ kiểm thử tự động và minh chứng của từng hoạt động kiểm thử.
+**ĐẠI HỌC PHENIKAA**<br>
+**TRƯỜNG CÔNG NGHỆ THÔNG TIN ĐẠI HỌC PHENIKAA**
 
-## Thông tin đề tài
+# BÁO CÁO ĐỒ ÁN
 
-| Mục | Nội dung |
-|---|---|
-| Trường | Trường Công nghệ Thông tin, Đại học Phenikaa |
-| Học phần | Đánh giá và Kiểm định chất lượng phần mềm |
-| Lớp học phần | CSE703010-1-1-26 |
-| Giảng viên hướng dẫn | TS. Trịnh Thanh Bình |
-| Tên đề tài | Đánh giá và kiểm định chất lượng hệ thống thương mại điện tử có tích hợp AI Chatbot tư vấn |
-| Nhóm thực hiện | Nhóm 5 (3 thành viên) |
-| Đối tượng kiểm định | Tiger Shop, hệ thống thương mại điện tử bán quần áo có trợ lý ảo Tiger AI dùng Google Gemini, kênh chat hỗ trợ thời gian thực và phân hệ quản lý nhân sự |
-| Thời gian thực thi kiểm thử | 24/09/2026 đến 26/09/2026 |
-| Hoàn thành | Hà Nội, tháng 10 năm 2026 |
+### MÔN HỌC: ĐÁNH GIÁ VÀ KIỂM ĐỊNH CHẤT LƯỢNG PHẦN MỀM
 
-## Thành viên nhóm
+**TÊN ĐỀ TÀI: ĐÁNH GIÁ VÀ KIỂM ĐỊNH CHẤT LƯỢNG HỆ THỐNG THƯƠNG MẠI ĐIỆN TỬ<br>CÓ TÍCH HỢP AI CHATBOT TƯ VẤN**
 
-| STT | Họ và tên | Mã sinh viên | Phần việc chính | Tỉ lệ đóng góp |
-|---|---|---|---|---|
-| 1 | Trần Đình Danh (nhóm trưởng) | 23010211 | Lập kế hoạch và điều phối nhóm; kế hoạch đảm bảo chất lượng và kế hoạch kiểm thử (Chương II); cùng thiết kế test case và viết kiểm thử tự động; tổng hợp khiếm khuyết, đánh giá theo ISO/IEC 25010 và kết luận (Chương VII) | 34% |
-| 2 | Lê Đình Đức Anh | 23010219 | Đặc tả yêu cầu (Chương I); vẽ sơ đồ UML; dựng môi trường kiểm thử; kiểm thử tự động (Chương IV); kiểm thử bảo mật | 33% |
-| 3 | Lê Quang Thắng | 23010236 | Vẽ sơ đồ UML; thiết kế và thực hiện test case (Chương III); kiểm thử hiệu năng (Chương V); kiểm thử bảo mật (Chương VI); tổng hợp minh chứng | 33% |
+Lớp học phần: CSE703010-1-1-26<br>
+GVHD: TS. Trịnh Thanh Bình
 
-### Phân công công việc
+**Thành viên nhóm 5 thực hiện:**
 
-| Công việc | Nội dung | Người thực hiện |
+| Họ và Tên | Mã sinh viên | Email |
 |---|---|---|
-| 1 | Lập kế hoạch thực hiện đồ án, chia việc, theo dõi tiến độ và trao đổi với giảng viên hướng dẫn | Trần Đình Danh |
-| 2 | Đặc tả yêu cầu phần mềm: 25 Use Case, yêu cầu phi chức năng, đối chiếu với mã nguồn (Chương I) | Lê Đình Đức Anh |
-| 3 | Vẽ sơ đồ Use Case, tuần tự, hoạt động, lớp, ERD, kiến trúc và triển khai (Chương I, Chương II) | Lê Đình Đức Anh, Lê Quang Thắng |
-| 4 | Lập kế hoạch đảm bảo chất lượng và kế hoạch kiểm thử theo IEEE 829 và IEEE 730 (Chương II) | Trần Đình Danh |
-| 5 | Dựng môi trường kiểm thử: MySQL 8.0.46 trong Docker, lược đồ 23 bảng, dữ liệu mẫu và tài khoản kiểm thử | Lê Đình Đức Anh |
-| 6 | Thiết kế và thực hiện 135 test case, lập ma trận truy vết và tệp Excel quản lý test case (Chương III) | Lê Quang Thắng, Trần Đình Danh |
-| 7 | Viết 222 kịch bản kiểm thử tự động bằng Jest và Supertest, đo độ bao phủ mã nguồn (Chương IV) | Lê Đình Đức Anh, Trần Đình Danh |
-| 8 | Kiểm thử hiệu năng bằng Apache JMeter ở ba mức tải, phân tích lỗi phát sinh và khóa chết (Chương V) | Lê Quang Thắng |
-| 9 | Kiểm thử bảo mật bằng OWASP ZAP và 47 phép kiểm chứng theo kịch bản (Chương VI) | Lê Quang Thắng, Lê Đình Đức Anh |
-| 10 | Tổng hợp 36 khiếm khuyết, đánh giá chất lượng theo ISO/IEC 25010 và viết kết luận (Chương VII) | Trần Đình Danh |
-| 11 | Chụp ảnh giao diện, chuẩn hóa hình và tổng hợp minh chứng trong kho mã nguồn | Lê Quang Thắng |
-| 12 | Viết và hoàn thiện báo cáo, tổng hợp tài liệu tham khảo, chuẩn bị slide và video thuyết trình | Cả nhóm |
+| Trần Đình Danh | 23010211 | 23010211@st.phenikaa-uni.edu.vn |
+| Lê Đình Đức Anh | 23010219 | 23010219@st.phenikaa-uni.edu.vn |
+| Lê Quang Thắng | 23010236 | 23010236@st.phenikaa-uni.edu.vn |
+
+Hà Nội, 10/2026
+
+</div>
+
+---
+
+> 🎬 **Video thuyết trình (khoảng 31 phút): [Xem trực tiếp trên Google Drive](https://drive.google.com/drive/folders/1xpdqgYqou74RNUnsy4YJHszWI9veDvTd?usp=sharing)**
+>
+> Bản MP4 cũng có sẵn trong kho: [Video_thuyet_trinh_Nhom5.mp4](Video_thuyet_trinh_Nhom5.mp4) (GitHub không phát video trực tiếp nên cần tải về để xem).
+
+## Phân công nhiệm vụ
+
+### Danh sách công việc
+
+| Công việc | Mô tả tóm tắt | Người thực hiện |
+|---|---|---|
+| Công việc 1 | Lập kế hoạch thực hiện đồ án, chia việc, theo dõi tiến độ nhóm và trao đổi với giảng viên hướng dẫn | Trần Đình Danh |
+| Công việc 2 | Đặc tả yêu cầu phần mềm: 25 Use Case, yêu cầu phi chức năng, đối chiếu với mã nguồn (Chương I) | Lê Đình Đức Anh |
+| Công việc 3 | Vẽ sơ đồ Use Case, sơ đồ tuần tự, sơ đồ hoạt động, sơ đồ lớp, ERD, sơ đồ kiến trúc và sơ đồ triển khai (Chương I, Chương II) | Lê Đình Đức Anh, Lê Quang Thắng |
+| Công việc 4 | Lập kế hoạch đảm bảo chất lượng và kế hoạch kiểm thử theo IEEE 829 và IEEE 730 (Chương II) | Trần Đình Danh |
+| Công việc 5 | Dựng môi trường kiểm thử: MySQL 8.0.46 trong Docker, lược đồ 23 bảng, dữ liệu mẫu và tài khoản kiểm thử | Lê Đình Đức Anh |
+| Công việc 6 | Thiết kế và thực hiện 135 test case, lập ma trận truy vết và tệp Excel quản lý test case (Chương III) | Lê Quang Thắng, Trần Đình Danh |
+| Công việc 7 | Viết 222 kịch bản kiểm thử tự động bằng Jest và Supertest, đo độ bao phủ mã nguồn (Chương IV) | Lê Đình Đức Anh, Trần Đình Danh |
+| Công việc 8 | Kiểm thử hiệu năng bằng Apache JMeter ở ba mức tải, phân tích lỗi phát sinh và khóa chết (Chương V) | Lê Quang Thắng |
+| Công việc 9 | Kiểm thử bảo mật bằng OWASP ZAP và 47 phép kiểm chứng theo kịch bản (Chương VI) | Lê Quang Thắng, Lê Đình Đức Anh |
+| Công việc 10 | Tổng hợp 36 khiếm khuyết, đánh giá chất lượng theo ISO/IEC 25010 và viết kết luận (Chương VII) | Trần Đình Danh |
+| Công việc 11 | Chụp ảnh giao diện, chuẩn hóa hình và tổng hợp minh chứng trong kho mã nguồn | Lê Quang Thắng |
+| Công việc 12 | Viết và hoàn thiện báo cáo, tổng hợp tài liệu tham khảo, chuẩn bị slide thuyết trình | Trần Đình Danh, Lê Đình Đức Anh, Lê Quang Thắng |
+
+### Phân công nhiệm vụ thành viên
+
+| STT | Họ và tên | Mã sinh viên | Nhiệm vụ phân công | Tỉ lệ đóng góp | Đánh giá |
+|---|---|---|---|---|---|
+| 1 | Trần Đình Danh | 23010211 | Công việc 1, 4, 6, 7, 10, 12 | 34% | Hoàn thành |
+| 2 | Lê Đình Đức Anh | 23010219 | Công việc 2, 3, 5, 7, 9, 12 | 33% | Hoàn thành |
+| 3 | Lê Quang Thắng | 23010236 | Công việc 3, 6, 8, 9, 11, 12 | 33% | Hoàn thành |
 
 ## Sản phẩm nộp
 
@@ -47,7 +63,7 @@
 |---|---|---|
 | Báo cáo đồ án | [Báo cáo_Nhóm 5_Đánh giá kiểm định chất lượng phần mềm.docx](<Báo cáo_Nhóm 5_Đánh giá kiểm định chất lượng phần mềm.docx>) | 7 chương, phụ lục A đến H; bấm vào tệp rồi chọn tải về để mở bằng Word |
 | Slide thuyết trình | [Slide_Nhóm5_Đánh giá kiểm định chất lượng phần mềm.pptx](<Slide_Nhóm5_Đánh giá kiểm định chất lượng phần mềm.pptx>) | Mở bằng PowerPoint |
-| Video thuyết trình | [Video_thuyet_trinh_Nhom5.mp4](Video_thuyet_trinh_Nhom5.mp4) | MP4 khoảng 44 MB, dài khoảng 31 phút; GitHub không phát video trực tiếp nên cần tải về để xem |
+| Video thuyết trình | [Video_thuyet_trinh_Nhom5.mp4](Video_thuyet_trinh_Nhom5.mp4) | Xem trực tiếp trên [Google Drive](https://drive.google.com/drive/folders/1xpdqgYqou74RNUnsy4YJHszWI9veDvTd?usp=sharing); bản MP4 trong kho khoảng 44 MB, dài khoảng 31 phút, cần tải về để xem |
 | Bảng test case | [bao-cao-kiem-thu/Tiger_Shop_TestCases.xlsx](bao-cao-kiem-thu/Tiger_Shop_TestCases.xlsx) | 135 test case kèm kết quả thực hiện |
 | Minh chứng kiểm thử | [bao-cao-kiem-thu/](bao-cao-kiem-thu/) | Kết quả Jest, độ bao phủ, hiệu năng, bảo mật (xem mục Minh chứng kiểm thử) |
 | Bộ công cụ demo | [Demo_Nhóm 5_Đánh giá kiểm thử chất lượng phần mềm/demo/](<Demo_Nhóm 5_Đánh giá kiểm thử chất lượng phần mềm/demo/>) | Các tệp .command dùng để chạy demo trực tiếp khi thuyết trình |
@@ -315,7 +331,7 @@ Nhóm là đội kiểm thử độc lập nên **không sửa khiếm khuyết 
 |---|---|
 | Báo cáo chính thức | `Báo cáo_Nhóm 5_Đánh giá kiểm định chất lượng phần mềm.docx` |
 | Slide thuyết trình | `Slide_Nhóm5_Đánh giá kiểm định chất lượng phần mềm.pptx` |
-| Video thuyết trình | `Video_thuyet_trinh_Nhom5.mp4` |
+| Video thuyết trình | [Google Drive](https://drive.google.com/drive/folders/1xpdqgYqou74RNUnsy4YJHszWI9veDvTd?usp=sharing), bản trong kho `Video_thuyet_trinh_Nhom5.mp4` |
 | Hồ sơ kiểm thử chi tiết | `bao-cao-kiem-thu/README.md` |
 | Hướng dẫn dựng môi trường | `bao-cao-kiem-thu/HUONG_DAN_MOI_TRUONG.md` |
 | Bảng test case | `bao-cao-kiem-thu/Tiger_Shop_TestCases.xlsx` |
